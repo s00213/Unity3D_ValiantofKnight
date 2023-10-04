@@ -76,3 +76,7 @@ crashlytics-build.properties
 /Assets/Resources.meta
 /Assets/Scenes.meta
 /Assets/Imports.meta
+/Assets/Configs/URPSettings
+/Assets/Configs/URPSettings.meta
+/Assets/UniversalRenderPipelineGlobalSettings.asset
+/Assets/UniversalRenderPipelineGlobalSettings.asset.meta
