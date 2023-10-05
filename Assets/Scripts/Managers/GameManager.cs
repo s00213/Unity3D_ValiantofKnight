@@ -2,26 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
 using UnityEditor.EditorTools;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 	private static GameManager instance;
-	private static PoolManager pool;
-	private static ResourceManager resource;
-	//private static UIManager ui;
-	private static SoundManager sound;
-	private static SceneManager scene;
-	
+	private static PoolManager poolManager;
+	private static ResourceManager resourceManager;
+	private static SceneManager sceneManager;
+	private static SoundManager soundManager;
+
 
 	public static GameManager Instance { get { return instance; } }
-	public static PoolManager Pool { get { return pool; } }
-	public static ResourceManager Resource { get { return resource; } }
-	//public static UIManager UI { get { return ui; } }
-	public static SoundManager Sound { get { return sound; } }
-	public static SceneManager Scene { get { return scene; } }
-	
+	public static PoolManager Pool { get { return poolManager; } }
+	public static ResourceManager Resource { get { return resourceManager; } }
+	public static SceneManager Scene { get { return sceneManager; } }
+	public static SoundManager Sound { get { return soundManager; } }
+
 
 	private void Awake()
 	{
@@ -44,29 +43,24 @@ public class GameManager : MonoBehaviour
 
 	private void InitManagers()
 	{
-		GameObject resourceObj = new GameObject();
-		resourceObj.name = "ResourceManager";
-		resourceObj.transform.parent = transform;
-		resource = resourceObj.AddComponent<ResourceManager>();
+		GameObject resourceObject = new GameObject();
+		resourceObject.name = "ResourceManager";
+		resourceObject.transform.parent = transform;
+		resourceManager = resourceObject.AddComponent<ResourceManager>();
 
-		GameObject poolObj = new GameObject();
-		poolObj.name = "PoolManager";
-		poolObj.transform.parent = transform;
-		pool = poolObj.AddComponent<PoolManager>();
+		GameObject poolObject = new GameObject();
+		poolObject.name = "PoolManager";
+		poolObject.transform.parent = transform;
+		poolManager = poolObject.AddComponent<PoolManager>();
 
-		//GameObject uiObj = new GameObject();
-		//uiObj.name = "UIManager";
-		//uiObj.transform.parent = transform;
-		//ui = uiObj.AddComponent<UIManager>();
+		GameObject sceneObject = new GameObject();
+		sceneObject.name = "SceneManager";
+		sceneObject.transform.parent = transform;
+		sceneManager = sceneObject.AddComponent<SceneManager>();
 
-		GameObject soundObj = new GameObject();
-		soundObj.name = "SoundManager";
-		soundObj.transform.parent = transform;
-		sound = soundObj.AddComponent<SoundManager>();
-
-		GameObject sceneObj = new GameObject();
-		sceneObj.name = "SceneManager";
-		sceneObj.transform.parent = transform;
-		scene = sceneObj.AddComponent<SceneManager>();
+		GameObject soundObject = new GameObject();
+		soundObject.name = "SoundManager";
+		soundObject.transform.parent = transform;
+		soundManager = soundObject.AddComponent<SoundManager>();	
 	}
 }

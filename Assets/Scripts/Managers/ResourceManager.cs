@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+	// FlyWeight 패턴으로 구현
 	Dictionary<string, Object> resources = new Dictionary<string, Object>();
 
 	public T Load<T>(string path) where T : Object

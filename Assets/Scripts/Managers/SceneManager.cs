@@ -1,28 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
-public enum Scene { LOBBY, LOADING, GAME, TEMP, SCORE };
+
 
 public class SceneManager : MonoBehaviour
 {
-	private Scene currentScene;
-	public Scene CurrentScene { get { return currentScene; } }
-
-	public void LoadScene(Scene scene)
+	private BaseScene curScene;
+	public BaseScene CurScene
 	{
-		currentScene = scene;
-		StartCoroutine(LoadingRoutine(scene));
+		get
+		{
+			if (curScene == null)
+				curScene = GameObject.FindObjectOfType<BaseScene>();
+
+			return curScene;
+		}
 	}
 
-	IEnumerator LoadingRoutine(Scene scene)
+	internal static AsyncOperation LoadSceneA(string sceneName)
 	{
-		GameManager.Sound.Clear();
-		yield return new WaitUntil(() => { return GameManager.Sound.IsMuted(); });
+		throw new NotImplementedException();
+	}
 
-		GameManager.Sound.FadeInAudio();
-		yield return new WaitWhile(() => { return GameManager.Sound.IsMuted(); });
-
-		yield break;
+	// ToDo : UI Manager로 바인딩하는 것이 더 좋음
+	public void LoadScene(string sceneName)
+	{
+		UnitySceneManager.LoadSceneAsync(sceneName);
 	}
 }
