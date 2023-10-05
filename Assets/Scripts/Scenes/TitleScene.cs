@@ -7,7 +7,6 @@ public class TitleScene : MonoBehaviour
 	public void StartButton()
 	{
 		GameManager.Scene.LoadScene("VillageScene");
-		Debug.Log("LoadScene : VillageScene");
 	}
 
 	public void OnApplicationQuit()
