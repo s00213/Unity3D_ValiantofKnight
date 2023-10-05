@@ -32,7 +32,7 @@ public class LoadingScene : MonoBehaviour
 			yield return null;
 		}
 
-		//GameManager.Scene.LoadScene();
+		//GameManager.Scene.LoadScene("LoadingScene");
 		yield return new WaitForSecondsRealtime(0.1f);
 	}
 }
