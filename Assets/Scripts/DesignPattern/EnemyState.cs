@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
 
-/* FSM */
+/// <summary>
+/// FSM
+/// </summary>
 public class EnemyState : MonoBehaviour, IDamageable
 {
 	// Enemy 상태 정보
