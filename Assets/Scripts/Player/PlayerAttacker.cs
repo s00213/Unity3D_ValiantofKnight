@@ -21,7 +21,7 @@ public class PlayerAttacker : MonoBehaviour
 	private void Awake()
 	{
 		animator = GetComponent<Animator>();
-		weapon = GetComponent<WeaponSystem>();
+		//weapon = GetComponent<WeaponSystem>();
 	}
 
 	private void Attack()
