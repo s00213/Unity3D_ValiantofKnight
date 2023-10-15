@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
-
-
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager; // 만든 SceneManager와 유니티 내의 SceneManager와 겹침 방지
 
 public class SceneManager : MonoBehaviour
 {

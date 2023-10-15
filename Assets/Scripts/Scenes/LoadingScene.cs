@@ -1,38 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
-	public static string nextScene;
-	private float progress;
+	[SerializeField] Slider slider;
+
+	private Animator anim;
 
 	private void Awake()
 	{
-		progress = 0.0f;
+		anim = GetComponent<Animator>();
 	}
 
-	private void Start()
+	public void FadeIn()
 	{
-		StartCoroutine(LoadingRoutine());
+		anim.SetTrigger("FadeIn");
 	}
 
-	public static void LoadScene(string sceneName)
+	public void FadeOut()
 	{
-		nextScene = sceneName;
-		//SceneManager.LoadScene("LoadingScene");
+		anim.SetTrigger("FadeOut");
 	}
 
-	IEnumerator LoadingRoutine()
+	public void SetProgress(float progress)
 	{
-		while (progress < 1f)
-		{
-			progress += Time.deltaTime * 0.2f;
-
-			yield return null;
-		}
-
-		//GameManager.Scene.LoadScene("LoadingScene");
-		yield return new WaitForSecondsRealtime(0.1f);
+		slider.value = progress;
 	}
 }
