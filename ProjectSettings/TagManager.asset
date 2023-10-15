@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ITEM
-  - SLOT
-  - MELEE
-  - ENEMY
-  - EnemyBullet
+  - Environment
+  - Weapons
+  - Enemy
   layers:
   - Default
   - TransparentFX

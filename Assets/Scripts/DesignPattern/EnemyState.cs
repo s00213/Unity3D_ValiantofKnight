@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 /// <summary>
 /// FSM
@@ -18,23 +20,22 @@ public class EnemyState : MonoBehaviour, IDamageable
 		DIE
 	}
 
+	[Header("EnemyStats")]
 	public State state = State.IDLE; // Enemy의 현재 상태
 	public float traceDistance = 5.0f; // Enemy의 TRACE 가능한 거리
 	public float attackDistance = 3.0f; // Enemy의 ATTACK 가능한 거리
 	public bool isDie = false; // Enemy의 사망 여부
+	[SerializeField] private int HP = 100;
+	[SerializeField] private int curHP;
+
+	[Header("UI")]
+	[SerializeField] private Slider HPSlider;
+	//[SerializeField] private TMP_Text HPText;
 
 	private Transform monster; // Enemy
 	private Transform player; // Enemy의 추적 대상
 	private NavMeshAgent navMeshAgent;
 	private Animator animator;
-
-	[Header("EnemyStats")]
-	private int HP = 100;
-	[SerializeField] private int curHP;
-
-	[Header("UI")]
-	//public Slider HPSlider;
-	//public TMP_Text HPText;
 
 	//private PlayerState playerState; // Player의 데이터 가져옴
 	PlayerAttacker playerAttacker;
@@ -74,14 +75,14 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 	private void Start()
 	{
-		//HPSlider.maxValue = HP;
-		//curHP = HP;
-		//HPSlider.value = curHP;
+		HPSlider.maxValue = HP;
+		curHP = HP;
+		HPSlider.value = curHP;
 	}
 
 	void Update()
 	{
-		//HPSlider.value = curHP;
+		HPSlider.value = curHP;
 	}
 
 	// 0.1초 간격으로 상태 체크하는 코루틴
@@ -189,8 +190,8 @@ public class EnemyState : MonoBehaviour, IDamageable
 	{
 		if (curHP >= 0.0f && coll.CompareTag("MELEE"))
 		{
-			//curHP -= damage;
-			//HPSlider.value = curHP;
+			curHP -= damage;
+			HPSlider.value = curHP;
 			// 피격 리액션 애니메이션 실행
 			animator.SetTrigger("GetHit");
 			Debug.Log($"Enemy HP = {curHP / HP}");
