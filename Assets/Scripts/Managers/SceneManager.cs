@@ -51,28 +51,12 @@ public class SceneManager : MonoBehaviour
 			yield return null;		
 		}
 
-		// 추가적인 씬에서 준비할 로딩을 진행하고 넘어가야 함
-		// 임의 페이크 로딩
-		Debug.Log("몬스터 랜덤 배치");
-		loadingUI.SetProgress(0.6f);
-		//// 게임 시간은 멈춰있으니 실제 시간만큼 흘러가게 함
-		yield return new WaitForSecondsRealtime(1f);
-
-		Debug.Log("리소스 불러오기");
-		loadingUI.SetProgress(0.7f);
-		yield return new WaitForSecondsRealtime(1f);
-
-		Debug.Log("풀링");
-		loadingUI.SetProgress(0.8f);
-		yield return new WaitForSecondsRealtime(1f);
-
-		Debug.Log("랜덤 아이템 배치");
-		loadingUI.SetProgress(0.9f);
-		yield return new WaitForSecondsRealtime(1f);
-
-		Debug.Log("랜덤 맵 생성");
-		loadingUI.SetProgress(1.0f);
-		yield return new WaitForSecondsRealtime(1f);
+		CurScene.LoadAsync();
+		while (CurScene.progress < 1f)
+		{
+			loadingUI.SetProgress(Mathf.Lerp(0.5f, 1.0f, CurScene.progress));
+			yield return null;
+		}
 
 		//로딩 중에는 게임의 시간을 멈춘 것 해제
 		Time.timeScale = 1f;
