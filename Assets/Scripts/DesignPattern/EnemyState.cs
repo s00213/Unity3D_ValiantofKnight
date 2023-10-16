@@ -188,7 +188,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	// 플레이어에게 데미지를 입으면 HP 차감되고 피격 리액션 실행됨
 	private void OnTriggerEnter(Collider coll)
 	{
-		if (curHP >= 0.0f && coll.CompareTag("MELEE"))
+		if (curHP >= 0.0f && coll.CompareTag("Weapons"))
 		{
 			curHP -= damage;
 			HPSlider.value = curHP;
