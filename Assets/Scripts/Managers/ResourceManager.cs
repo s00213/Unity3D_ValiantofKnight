@@ -7,6 +7,7 @@ public class ResourceManager : MonoBehaviour
 	// FlyWeight 패턴으로 구현
 	Dictionary<string, Object> resources = new Dictionary<string, Object>();
 
+	// 한 번 로딩하면 보관하고 있기 때문에 다시 쓸 수 있음
 	public T Load<T>(string path) where T : Object
 	{
 		string key = $"{typeof(T)}.{path}";

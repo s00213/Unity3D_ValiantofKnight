@@ -2,7 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseScene : MonoBehaviour
+public abstract class BaseScene : MonoBehaviour
 {
-	//TODO : 이미 사용한 씬 삭제하기
+	public float progress { get; protected set; }
+	protected abstract IEnumerator LoadingRoutine();
+
+	public void LoadAsync()
+	{
+		StartCoroutine(LoadingRoutine());
+	}
 }

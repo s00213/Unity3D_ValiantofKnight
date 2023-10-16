@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingUI : BaseScene
+public class LoadingUI : MonoBehaviour
 {
 	[SerializeField] private Slider slider;
 
