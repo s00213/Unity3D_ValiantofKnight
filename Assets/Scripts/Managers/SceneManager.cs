@@ -23,7 +23,7 @@ public class SceneManager : MonoBehaviour
 
 	private void Awake()
 	{
-		LoadingUI loadingUI = Resources.Load<LoadingUI>("Scenes/02_LoadingScene");
+		LoadingUI loadingUI = GameManager.Resource.Instantiate<LoadingUI>("UI/LoadingUI");
 		this.loadingUI = Instantiate(loadingUI);
 		this.loadingUI.transform.SetParent(transform);
 	}
