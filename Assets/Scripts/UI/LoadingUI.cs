@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingScene : MonoBehaviour
+public class LoadingUI : BaseScene
 {
-	[SerializeField] Slider slider;
+	[SerializeField] private Slider slider;
 
 	private Animator anim;
 
@@ -16,12 +16,14 @@ public class LoadingScene : MonoBehaviour
 
 	public void FadeIn()
 	{
-		anim.SetTrigger("FadeIn");
+		anim.SetBool("Active", true);
+		Debug.Log("FadeIn");
 	}
 
 	public void FadeOut()
 	{
-		anim.SetTrigger("FadeOut");
+		anim.SetBool("Active", false);
+		Debug.Log("FadeOut");
 	}
 
 	public void SetProgress(float progress)

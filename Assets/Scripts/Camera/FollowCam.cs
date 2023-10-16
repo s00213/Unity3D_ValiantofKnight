@@ -10,8 +10,8 @@ public class FollowCam : MonoBehaviour
 	public float damping = 10.0f; // 반응 속도	
 	public float targetOffset = 2.0f; // 카메라 LookAt의 Offset 값
 
-	private Transform camTransform; // Main Camera 자신의 Transform 컴포넌트
-	private Vector3 velocity = Vector3.zero; // SmoothDamp에서 사용할 변수
+	private Transform camTransform;
+	private Vector3 velocity = Vector3.zero;
 
 	void Start()
 	{
