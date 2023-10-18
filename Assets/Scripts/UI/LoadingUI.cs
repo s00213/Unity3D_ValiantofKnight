@@ -7,23 +7,23 @@ public class LoadingUI : MonoBehaviour
 {
 	[SerializeField] private Slider slider;
 
-	private Animator anim;
+	private Animator animater;
 
 	private void Awake()
 	{
-		anim = GetComponent<Animator>();
+		animater = GetComponent<Animator>();
 	}
 
 	public void FadeIn()
 	{
-		anim.SetBool("Active", true);
-		Debug.Log("FadeIn");
+		animater.SetBool("Active", true);
+		Debug.Log("Fade In");
 	}
 
 	public void FadeOut()
 	{
-		anim.SetBool("Active", false);
-		Debug.Log("FadeOut");
+		animater.SetBool("Active", false);
+		Debug.Log("Fade Out");
 	}
 
 	public void SetProgress(float progress)

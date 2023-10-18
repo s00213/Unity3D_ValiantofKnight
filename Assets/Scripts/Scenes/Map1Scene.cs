@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VillageScene : BaseScene
+public abstract class Map1Scene : BaseScene
 {
-	//public GameObject playerPrefabs;
-	//public Transform playerPosition;
-
 	protected override IEnumerator LoadingRoutine()
 	{
 		// 임의 페이크 로딩
@@ -25,8 +22,6 @@ public class VillageScene : BaseScene
 
 		Debug.Log("플레이어 배치");
 		progress = 0.6f;
-		//GameObject player = Instantiate(playerPrefabs);
-		//player.transform.position = playerPosition.position;
 		yield return new WaitForSecondsRealtime(1f);
 
 		Debug.Log("로딩 완료");

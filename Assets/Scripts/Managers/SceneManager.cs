@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager; // 현재 SceneManager와 유니티 내의 SceneManager와 겹침 방지
 
@@ -26,7 +25,7 @@ public class SceneManager : MonoBehaviour
 	{
 		LoadingUI loadingUI = GameManager.Resource.Load<LoadingUI>("UI/LoadingUI");
 		loadingUI = Instantiate(loadingUI);
-		loadingUI.transform.SetParent(transform, false);
+		loadingUI.transform.SetParent(transform);
 	}
 
 	public void LoadScene(string sceneName)
@@ -34,30 +33,32 @@ public class SceneManager : MonoBehaviour
 		StartCoroutine(LoadingRoutine(sceneName));
 	}
 
-	private IEnumerator LoadingRoutine(string sceneName)
+	IEnumerator LoadingRoutine(string sceneName)
 	{
-		loadingUI.SetProgress(0f);
 		loadingUI.FadeOut();
 		yield return new WaitForSeconds(0.5f);
 		//로딩 중에는 게임의 시간을 멈춰줌
 		Time.timeScale = 0f;  
 
 		// 비동기식 로딩
-		AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
-		
+		AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);		
 		while (!oper.isDone)
 		{
 			loadingUI.SetProgress(Mathf.Lerp(0.0f, 0.5f, oper.progress));
 			yield return null;		
 		}
 
-		CurScene.LoadAsync();
-		while (CurScene.progress < 1f)
+		if (CurScene != null)
 		{
-			loadingUI.SetProgress(Mathf.Lerp(0.5f, 1.0f, CurScene.progress));
-			yield return null;
+			CurScene.LoadAsync();
+			while (CurScene.progress < 1f)
+			{
+				loadingUI.SetProgress(Mathf.Lerp(0.5f, 1.0f, CurScene.progress));
+				yield return null;
+			}
 		}
 
+		loadingUI.SetProgress(1.0f);
 		//로딩 중에는 게임의 시간을 멈춘 것 해제
 		Time.timeScale = 1f;
 		loadingUI.FadeIn();
