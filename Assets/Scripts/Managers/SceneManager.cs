@@ -23,9 +23,9 @@ public class SceneManager : MonoBehaviour
 
 	private void Awake()
 	{
-		LoadingUI loadingUI = GameManager.Resource.Load<LoadingUI>("UI/LoadingUI");
-		loadingUI = Instantiate(loadingUI);
-		loadingUI.transform.SetParent(transform);
+		LoadingUI ui = GameManager.Resource.Load<LoadingUI>("UI/LoadingUI");
+		loadingUI = Instantiate(ui);
+		loadingUI.transform.SetParent(transform, false);
 	}
 
 	public void LoadScene(string sceneName)
