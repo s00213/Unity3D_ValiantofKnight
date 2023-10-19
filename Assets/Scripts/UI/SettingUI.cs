@@ -2,21 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SettingUI : SceneUI
+public class SettingSceneUI : PopUpUI
 {
-	//protected override void Awake()
-	//{
-	//	base.Awake();
+	protected override void Awake()
+	{
+		base.Awake();
 
-	//	buttons["InfoButton"].onClick.AddListener(CLickInfoButton);
-	//	buttons["VolumButton"].onClick.AddListener(() => { Debug.Log("Volum"); });
-	//	buttons["SettingButton"].onClick.AddListener(() => { Debug.Log("Setting"); });
-	//	buttons["SaveButton"].onClick.AddListener(() => { CloseUI(); });
-	//	buttons["CancelButton"].onClick.AddListener(() => { CloseUI(); });
-	//}
+		buttons["SettingButton"].onClick.AddListener(() => { Debug.Log("Setting"); });
+	}
 
-	//public void CLickInfoButton()
-	//{ 
-		
-	//}
+	public void OpenPausePopUpUI()
+	{
+		GameManager.UI.ShowPopUpUI("UI/SettingPopUpUI");
+	}
 }
