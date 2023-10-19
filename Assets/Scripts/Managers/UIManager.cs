@@ -36,12 +36,6 @@ public class UIManager : MonoBehaviour
 		inGameCanvas.sortingOrder = 0;
 	}
 
-	public void ShowPopUpUI(string path)
-	{
-		PopUpUI ui = GameManager.Resource.Load<PopUpUI>(path);
-		ShowPopUpUI(ui);
-	}
-
 	public T ShowPopUpUI<T>(T popUpUI) where T : PopUpUI
 	{
 		if (popUpStack.Count > 0)
@@ -64,7 +58,12 @@ public class UIManager : MonoBehaviour
 		return ShowPopUpUI(ui);
 	}
 
-
+	public void ShowPopUpUI(string path)
+	{
+		PopUpUI ui = GameManager.Resource.Load<PopUpUI>(path);
+		ShowPopUpUI(ui);
+	}
+	
 	public void ClosePopUpUI()
 	{
 		PopUpUI ui = popUpStack.Pop();

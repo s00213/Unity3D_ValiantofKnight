@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class ItemSlotUI : SceneUI
+public class SettingSceneUI : SceneUI
 {
 	protected override void Awake()
 	{
 		base.Awake();
 
+		buttons["SettingButton"].onClick.AddListener(() => { Debug.Log("Setting"); });
 	}
 }
