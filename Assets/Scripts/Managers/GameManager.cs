@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 	private static GameManager instance;
 	private static PoolManager poolManager;
 	private static ResourceManager resourceManager;
+	private static UIManager uiManager;
 	private static SceneManager sceneManager;
 	private static SoundManager soundManager;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get { return instance; } }
 	public static PoolManager Pool { get { return poolManager; } }
 	public static ResourceManager Resource { get { return resourceManager; } }
+	public static UIManager UI { get { return uiManager; } }
 	public static SceneManager Scene { get { return sceneManager; } }
 	public static SoundManager Sound { get { return soundManager; } }
 
@@ -43,15 +45,20 @@ public class GameManager : MonoBehaviour
 
 	private void InitManagers()
 	{
+		GameObject poolObject = new GameObject();
+		poolObject.name = "PoolManager";
+		poolObject.transform.parent = transform;
+		poolManager = poolObject.AddComponent<PoolManager>();
+
 		GameObject resourceObject = new GameObject();
 		resourceObject.name = "ResourceManager";
 		resourceObject.transform.parent = transform;
 		resourceManager = resourceObject.AddComponent<ResourceManager>();
 
-		GameObject poolObject = new GameObject();
-		poolObject.name = "PoolManager";
-		poolObject.transform.parent = transform;
-		poolManager = poolObject.AddComponent<PoolManager>();
+		GameObject uiObject = new GameObject();
+		uiObject.name = "UIManager";
+		uiObject.transform.parent = transform;
+		uiManager = uiObject.AddComponent<UIManager>();
 
 		GameObject sceneObject = new GameObject();
 		sceneObject.name = "SceneManager";
