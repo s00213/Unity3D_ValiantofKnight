@@ -17,6 +17,7 @@ public class BaseUI : MonoBehaviour
 		BindChildren();
 	}
 
+	// UI ¹ÙÀÎµù
 	protected virtual void BindChildren()
 	{
 		transforms = new Dictionary<string, RectTransform>();

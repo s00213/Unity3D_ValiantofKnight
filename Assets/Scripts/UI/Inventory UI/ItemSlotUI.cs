@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class ItemSlotUI : MonoBehaviour
+public class ItemSlotUI : SceneUI
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	protected override void Awake()
+	{
+		base.Awake();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	}
 }
