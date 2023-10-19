@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MovableHeaderUI : MonoBehaviour, IDragHandler, IPointerDownHandler
+public class MovableUI : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
 	[SerializeField] private Transform tartgetTransform; // UI
 
