@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 	private EventSystem eventSystem;
 
 	private Canvas popUpCanvas;
-	private Stack<PopUpUI> popUpStack;
+	private Stack<PopUpUI> popUpStack; // 편리하게 UI 관리를 위힌 Stack 구조 사용
 
 	private Canvas windowCanvas;
 
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
 
 		popUpCanvas = GameManager.Resource.Instantiate<Canvas>("UI/Canvas");
 		popUpCanvas.gameObject.name = "PopUpCanvas";
-		popUpCanvas.sortingOrder = 100;
+		popUpCanvas.sortingOrder = 100;					
 		popUpStack = new Stack<PopUpUI>();
 
 		windowCanvas = GameManager.Resource.Instantiate<Canvas>("UI/Canvas");
@@ -36,26 +36,16 @@ public class UIManager : MonoBehaviour
 		inGameCanvas.sortingOrder = 0;
 	}
 
-	public T ShowPopUpUI<T>(T popUpUI) where T : PopUpUI
+	public void ShowPopUpUI(PopUpUI popUpUI)
 	{
-		if (popUpStack.Count > 0)
-		{
-			PopUpUI prevUI = popUpStack.Peek();
-			prevUI.gameObject.SetActive(false);
-		}
-
-		T ui = GameManager.Pool.GetUI<T>(popUpUI);
+		PopUpUI ui = GameManager.Pool.GetUI(popUpUI);
 		ui.transform.SetParent(popUpCanvas.transform, false);
+
+		// UI 관리를 위힌 Stack 구조 사용
 		popUpStack.Push(ui);
 
-		Time.timeScale = 0f;
-		return ui;
-	}
-
-	public T ShowPopUpUI<T>(string path) where T : PopUpUI
-	{
-		T ui = GameManager.Resource.Load<T>(path);
-		return ShowPopUpUI(ui);
+		// 팝업이 있을 때   시간 멈추게 함
+		Time.timeScale = 0;
 	}
 
 	public void ShowPopUpUI(string path)
@@ -63,12 +53,14 @@ public class UIManager : MonoBehaviour
 		PopUpUI ui = GameManager.Resource.Load<PopUpUI>(path);
 		ShowPopUpUI(ui);
 	}
-	
+
 	public void ClosePopUpUI()
 	{
 		PopUpUI ui = popUpStack.Pop();
+		// 풀 매니저를 통해서 UI 반납함
 		GameManager.Pool.ReleaseUI(ui.gameObject);
 
+		// 팝업이 1개도 없으면 시간이 다시 흐르게 함
 		if (popUpStack.Count > 0)
 		{
 			PopUpUI curUI = popUpStack.Peek();
