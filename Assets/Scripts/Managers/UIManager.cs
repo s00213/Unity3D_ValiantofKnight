@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour
 		inGameCanvas.sortingOrder = 0;
 	}
 
+	// TODO : 만든 ShowPopUpUI은 일반화를 적용하면 PopUpUI를 상속받는 다른 팝업 UI를 반환받게끔 함
 	public void ShowPopUpUI(PopUpUI popUpUI)
 	{
 		// 이전의 팝업 UI가 있다면 잠깐 안 보이게 함
@@ -88,65 +89,66 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
-	//public T ShowWindowUI<T>(T windowUI) where T : WindowUI
-	//{
-	//	T ui = GameManager.Pool.GetUI(windowUI);
-	//	ui.transform.SetParent(windowCanvas.transform, false);
-	//	return ui;
-	//}
+	public void ShowWindowUI(WindowUI windowUI)
+	{
+		WindowUI ui = GameManager.Pool.GetUI(windowUI);
+		ui.transform.SetParent(windowCanvas.transform, false); 
+	}
 
-	//public T ShowWindowUI<T>(string path) where T : WindowUI
-	//{
-	//	T ui = GameManager.Resource.Load<T>(path);
-	//	return ShowWindowUI(ui);
-	//}
+	public void ShowWindowUI(string path)
+	{
+		WindowUI ui = GameManager.Resource.Load<WindowUI>(path);
+		ShowWindowUI(ui);
+	}
 
-	//public void SelectWindowUI<T>(T windowUI) where T : WindowUI
-	//{
-	//	windowUI.transform.SetAsLastSibling();
-	//}
+	public void SelectWindowUI(WindowUI windowUI)
+	{
+		// 선택한 UI가 계층 구조 상에서 가장 아래로 내려가짐
+		windowUI.transform.SetAsLastSibling();
+	}
 
-	//public void CloseWindowUI<T>(T windowUI) where T : WindowUI
-	//{
-	//	GameManager.Pool.ReleaseUI(windowUI.gameObject);
-	//}
+	public void CloseWindowUI(WindowUI windowUI) 
+	{ 
+		GameManager.Pool.ReleaseUI(windowUI.gameObject);
+	}
 
-	//public void ClearWindowUI()
-	//{
-	//	WindowUI[] windows = windowCanvas.GetComponentsInChildren<WindowUI>();
+	public void ClearWindowUI()
+	{
+		WindowUI[] windows = windowCanvas.GetComponentsInChildren<WindowUI>();
 
-	//	foreach (WindowUI windowUI in windows)
-	//	{
-	//		GameManager.Pool.ReleaseUI(windowUI.gameObject);
-	//	}
-	//}
+		foreach (WindowUI windowUI in windows)
+		{
+			GameManager.Pool.ReleaseUI(windowUI.gameObject);
+		}
+	}
 
-	//public T ShowInGameUI<T>(T gameUi) where T : InGameUI
-	//{
-	//	T ui = GameManager.Pool.GetUI(gameUi);
-	//	ui.transform.SetParent(inGameCanvas.transform, false);
+	// 일반화가 꼭 필요함
+	public T ShowInGameUI<T>(T gameUi) where T : InGameUI
+	{
+		T ui = GameManager.Pool.GetUI(gameUi);
+		ui.transform.SetParent(inGameCanvas.transform, false);
 
-	//	return ui;
-	//}
+		return ui;
+	}
 
-	//public T ShowInGameUI<T>(string path) where T : InGameUI
-	//{
-	//	T ui = GameManager.Resource.Load<T>(path);
-	//	return ShowInGameUI(ui);
-	//}
+	public T ShowInGameUI<T>(string path) where T : InGameUI
+	{
+		T ui = GameManager.Resource.Load<T>(path);
+		return ShowInGameUI(ui);
+	}
 
-	//public void CloseInGameUI<T>(T inGameUI) where T : InGameUI
-	//{
-	//	GameManager.Pool.ReleaseUI(inGameUI.gameObject);
-	//}
+	public void CloseInGameUI<T>(T inGameUI) where T : InGameUI
+	{
+		GameManager.Pool.ReleaseUI(inGameUI.gameObject);
+	}
 
-	//public void ClearInGameUI()
-	//{
-	//	InGameUI[] inGames = inGameCanvas.GetComponentsInChildren<InGameUI>();
+	public void ClearInGameUI()
+	{
+		InGameUI[] inGames = inGameCanvas.GetComponentsInChildren<InGameUI>();
 
-	//	foreach (InGameUI inGameUI in inGames)
-	//	{
-	//		GameManager.Pool.ReleaseUI(inGameUI.gameObject);
-	//	}
-	//}
+		foreach (InGameUI inGameUI in inGames)
+		{
+			GameManager.Pool.ReleaseUI(inGameUI.gameObject);
+		}
+	}
 }
