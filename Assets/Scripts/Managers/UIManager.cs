@@ -38,13 +38,20 @@ public class UIManager : MonoBehaviour
 
 	public void ShowPopUpUI(PopUpUI popUpUI)
 	{
+		// 이전의 팝업 UI가 있다면 잠깐 안 보이게 함
+		if (popUpStack.Count > 0)
+		{
+			PopUpUI prevUI = popUpStack.Peek();
+			prevUI.gameObject.SetActive(false);
+		}
+
 		PopUpUI ui = GameManager.Pool.GetUI(popUpUI);
 		ui.transform.SetParent(popUpCanvas.transform, false);
 
 		// UI 관리를 위힌 Stack 구조 사용
 		popUpStack.Push(ui);
 
-		// 팝업이 있을 때   시간 멈추게 함
+		// 팝업이 있을 때 시간 멈추게 함
 		Time.timeScale = 0;
 	}
 
@@ -60,7 +67,7 @@ public class UIManager : MonoBehaviour
 		// 풀 매니저를 통해서 UI 반납함
 		GameManager.Pool.ReleaseUI(ui.gameObject);
 
-		// 팝업이 1개도 없으면 시간이 다시 흐르게 함
+		// 가장 위에 있는 현재 UI를 활성화시켜서 보이게 함
 		if (popUpStack.Count > 0)
 		{
 			PopUpUI curUI = popUpStack.Peek();
@@ -68,6 +75,7 @@ public class UIManager : MonoBehaviour
 		}
 		else
 		{
+			// 팝업이 없을 때 시간 멈추게 함
 			Time.timeScale = 1f;
 		}
 	}
