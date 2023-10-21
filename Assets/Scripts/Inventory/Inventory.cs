@@ -10,13 +10,13 @@ public class Inventory : MonoBehaviour
 
 	private void Start()
 	{
-		// 시작 시에는 인벤토리 시스템 열지 않음
+		// 시작 시에는 인벤토리를 열지 않음
 		isOpen = false;
 	}
 
 	void Update()
 	{
-		// 인벤토리 시스템 열고 닫는 단축키 : I
+		// 인벤토리 열고 닫는 단축키 : I
 		if (Input.GetKeyDown(KeyCode.I) && !isOpen)
 		{
 			Debug.Log("I를 눌렀음, Open Inventory");

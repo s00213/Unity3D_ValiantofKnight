@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class InventoryUI : WindowUI
+public class EquipmentUI : WindowUI
 {
 	protected override void Awake()
 	{
@@ -12,5 +10,4 @@ public class InventoryUI : WindowUI
 
 		//buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
 	}
-
 }
