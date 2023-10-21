@@ -15,7 +15,7 @@ public class SceneManager : MonoBehaviour
 		{
 			// FindObjectOfType을 자주 쓰면 부담이 되니까 Null로 확인함
 			if (curScene == null)
-				curScene = GameObject.FindObjectOfType<BaseScene>(); 
+				curScene = GameObject.FindObjectOfType<BaseScene>();
 
 			return curScene;
 		}
@@ -38,14 +38,14 @@ public class SceneManager : MonoBehaviour
 		loadingUI.FadeOut();
 		yield return new WaitForSeconds(0.5f);
 		//로딩 중에는 게임의 시간을 멈춰줌
-		Time.timeScale = 0f;  
+		Time.timeScale = 0f;
 
 		// 비동기식 로딩
-		AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);		
+		AsyncOperation oper = UnitySceneManager.LoadSceneAsync(sceneName);
 		while (!oper.isDone)
 		{
 			loadingUI.SetProgress(Mathf.Lerp(0.0f, 0.5f, oper.progress));
-			yield return null;		
+			yield return null;
 		}
 
 		if (CurScene != null)

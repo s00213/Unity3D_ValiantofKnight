@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
 	public static SceneManager Scene { get { return sceneManager; } }
 	public static SoundManager Sound { get { return soundManager; } }
 
-
 	private void Awake()
 	{
 		if (instance != null)
