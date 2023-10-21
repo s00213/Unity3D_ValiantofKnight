@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 
 public class WindowUI : BaseUI, IDragHandler, IPointerDownHandler
 {
-	//protected override void Awake()
-	//{
-	//	base.Awake();
+	protected override void Awake()
+	{
+		base.Awake();
 
-	//	buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
-	//}
+		buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
+	}
 
 	public void OnDrag(PointerEventData eventData)
 	{

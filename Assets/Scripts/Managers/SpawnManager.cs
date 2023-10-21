@@ -73,16 +73,6 @@ public class SpawnManager : MonoBehaviour
 			monsterPool.Add(_monster);
 		}
 
-		//for (int i = 0; i < maxMonsters; i++)
-		//{
-		//	// 몬스터 생성
-		//	var _monster = GameManager.Resource.Load<GameObject>("Monster");                                
-		//	// 몬스터의 이름을 지정
-		//	_monster.name = $"Monster_{i:00}";
-		//	// 몬스터 비활성화
-		//	_monster.SetActive(false);
-		//	// 생성한 몬스터를 오브젝트 풀에 추가
-		//	monsterPool.Add(_monster);
 	}
 
 	// 오브젝트 풀에서 사용 가능한 몬스터를 추출해 반환하는 함수
