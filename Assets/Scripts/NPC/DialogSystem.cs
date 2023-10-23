@@ -16,17 +16,25 @@ public class DialogSystem : MonoBehaviour
 	public static DialogSystem instance;
 	private void Awake()
 	{
-		if (instance == null)
-			instance = this;
+		if (instance != null)
+		{
+			Destroy(this);
+			return;
+		}
 
-		else if (instance != this)
-			Destroy(gameObject);
+		instance = this;
+		DontDestroyOnLoad(this);
+	}
 
-		DontDestroyOnLoad(gameObject);
+	private void OnDestroy()
+	{
+		if (instance == this)
+			instance = null;
 	}
 
 	private void Start()
 	{
+		dialogUI.SetActive(false);
 		dialogText.text = dialogSentences[currentSentence];
 	}
 

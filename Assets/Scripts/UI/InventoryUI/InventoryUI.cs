@@ -6,11 +6,6 @@ using UnityEngine.UI;
 
 public class InventoryUI : WindowUI
 {
-	protected override void Awake()
-	{
-		base.Awake();
 
-		//buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
-	}
 
 }

@@ -8,6 +8,8 @@ TagManager:
   - Weapons
   - Enemy
   - Pet
+  - ITEM
+  - Slot
   layers:
   - Default
   - TransparentFX

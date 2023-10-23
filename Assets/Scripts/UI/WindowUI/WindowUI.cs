@@ -9,7 +9,7 @@ public class WindowUI : BaseUI, IDragHandler, IPointerDownHandler
 	{
 		base.Awake();
 
-		buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
+		//buttons["CloseButton"].onClick.AddListener(() => { CloseUI(); });
 	}
 
 	public void OnDrag(PointerEventData eventData)
