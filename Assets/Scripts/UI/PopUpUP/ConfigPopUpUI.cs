@@ -13,3 +13,4 @@ public class ConfigPopUpUI : PopUpUI
 		buttons["CancelButton"].onClick.AddListener(() => { GameManager.UI.ClosePopUpUI(); });
 	}
 }
+	

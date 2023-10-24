@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,19 +9,19 @@ using UnityEngine.UI;
 public class PlayerState : MonoBehaviour
 {
 	[Header("PlayerStats")]
-	public int maxHP;
-	public int curHP;
-	public int maxExp;
-	public int curExp;
+	public int curHP; 
+	public int maxHP; 
 
-	[Header("UI")]
+   [Header("UI")]
 	public Slider HPSlider;
 	public TMP_Text HPText;
-	public Slider EXPSlider;
-	public TMP_Text EXPText;
-	
+	public TMP_Text scoreText;
+
+	[Header("")]
 	public TMP_Text hitDamageText;
 	public bool isDie;
+
+	[Header("")]
 	[SerializeField] private string sceneToLoad;
 
 	// 델리게이트 선언
@@ -36,11 +37,6 @@ public class PlayerState : MonoBehaviour
 		curHP = maxHP;
 		HPSlider.value = curHP;
 		HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
-
-		EXPSlider.maxValue = maxExp;
-		curExp = maxExp;
-		EXPSlider.value = curExp;
-		EXPText.text = curExp.ToString("f0") + "/" + maxHP.ToString("f0");
 
 		hitDamageText.gameObject.SetActive(false);
 		hitDamageText.text = "0";
@@ -121,16 +117,15 @@ public class PlayerState : MonoBehaviour
 			animator.SetTrigger("IsDie");
 		}
 
-		StartCoroutine(WaitForAnimationToEndRoutine());
-
-		// GameManager 스크립트의 IsGameOver 프로퍼티 값을 변경
-		GameManager.Instance.IsGameOver = true;
+		StartCoroutine(WaitForAnimationToEndRoutine());		
 	}
 
 	private IEnumerator WaitForAnimationToEndRoutine()
-	{
-		// 애니메이션 재생을 기다립니다.
+	{		
 		yield return new WaitForSeconds(5f);
+
+		// GameManager 스크립트의 IsGameOver 프로퍼티 값을 변경
+		GameManager.Instance.IsGameOver = true;
 
 		// 애니메이션 재생이 끝난 후 게임 오버 씬으로 전환
 		GameManager.Scene.LoadScene(sceneToLoad);

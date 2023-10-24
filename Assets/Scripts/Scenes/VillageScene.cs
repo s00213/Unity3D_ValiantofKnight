@@ -10,7 +10,8 @@ public class VillageScene : BaseScene
 
 	private void Awake()
 	{
-		Debug.Log("TitleScene Init");		
+		Debug.Log("TitleScene Init");
+		
 	}
 
 	protected override IEnumerator LoadingRoutine()

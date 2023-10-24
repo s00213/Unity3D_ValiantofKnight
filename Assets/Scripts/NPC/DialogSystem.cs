@@ -13,23 +13,24 @@ public class DialogSystem : MonoBehaviour
 	[SerializeField] private string[] dialogSentences;
 	[SerializeField] private int currentSentence;
 	
-	public static DialogSystem instance;
+	public static DialogSystem Dialog;
+
 	private void Awake()
 	{
-		if (instance != null)
+		if (Dialog != null)
 		{
 			Destroy(this);
 			return;
 		}
 
-		instance = this;
+		Dialog = this;
 		DontDestroyOnLoad(this);
 	}
 
 	private void OnDestroy()
 	{
-		if (instance == this)
-			instance = null;
+		if (Dialog == this)
+			Dialog = null;
 	}
 
 	private void Start()

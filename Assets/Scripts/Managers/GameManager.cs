@@ -32,7 +32,12 @@ public class GameManager : MonoBehaviour
 
 		instance = this;
 		DontDestroyOnLoad(this);
+
 		InitManagers();
+
+		//GameManager.Sound.PlayBgm(true);
+		// SoundManager의 eunm 가지고 옴
+		// GameManager.Sound.PlaySfx(SoundManager.Sfx.Select);
 	}
 
 	private void OnDestroy()
@@ -66,7 +71,7 @@ public class GameManager : MonoBehaviour
 		GameObject soundObject = new GameObject();
 		soundObject.name = "SoundManager";
 		soundObject.transform.parent = transform;
-		soundManager = soundObject.AddComponent<SoundManager>();	
+		soundManager = soundObject.AddComponent<SoundManager>();
 	}
 
 	// 게임의 종료 여부를 저장할 멤버 변수
@@ -81,6 +86,8 @@ public class GameManager : MonoBehaviour
 			if (isGameOver)
 			{
 				CancelInvoke("CreateMonster");
+				//GameManager.Sound.PlaySfx(SoundManager.Sfx.Lose);
+				//GameManager.Sound.PlayBgm(false);
 			}
 		}
 	}

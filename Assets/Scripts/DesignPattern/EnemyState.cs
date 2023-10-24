@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Playables;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 /// <summary>
@@ -32,6 +35,10 @@ public class EnemyState : MonoBehaviour, IDamageable
 	[Header("UI")]
 	[SerializeField] private Slider HPSlider;
 
+	[Header("")]
+	[SerializeField] private int score = 50;
+
+
 	private Transform monster; // Enemy
 	private Transform player; // Enemy의 추적 대상
 	private NavMeshAgent navMeshAgent;
@@ -39,6 +46,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 	private PlayerState playerState; // Player의 데이터 가져옴
 	private PlayerAttacker playerAttacker;
+	private SpawnManager spawnManager;
 	public int damage; // Enemy가 Player에게 가하는 피해
 
 	private void OnEnable()
@@ -58,7 +66,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	}
 
 	// 스크립트가 비활성화될 때마다 호출되는 함수
-	void OnDisable()
+	private void OnDisable()
 	{
 		// 기존에 연결된 함수 해제
 		PlayerState.OnPlayerDie -= this.OnPlayerDie;
@@ -76,15 +84,16 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 		// Player의 데이터를 가져옴
 		playerState = FindObjectOfType<PlayerState>();
+		spawnManager = FindObjectOfType<SpawnManager>();
 	}
 
-	void Update()
+	private void Update()
 	{
 		HPSlider.value = curHP;
 	}
 
 	// 0.1초 간격으로 상태 체크하는 코루틴
-	IEnumerator EnemyCheckRoutine()
+	private IEnumerator EnemyCheckRoutine()
 	{
 		while (!isDie)
 		{
@@ -120,7 +129,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	}
 
 	// 상태에 따라 동작 수행하는 코루틴
-	IEnumerator EnemyActionRoutine()
+	private IEnumerator EnemyActionRoutine()
 	{
 		// DIE 상태가 아니라면 계속 상태 체크함
 		while (!isDie)
@@ -195,13 +204,18 @@ public class EnemyState : MonoBehaviour, IDamageable
 			HPSlider.value = curHP;
 			// 피격 리액션 애니메이션 실행
 			animator.SetTrigger("GetHit");
+			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Hit);
 			Debug.Log($"Enemy HP = {curHP / HP}");
 
 			if (curHP <= 0.0f)
 			{
 				state = State.DIE;
-				// ToDo : 몬스터가 사망했을 때 50 경험치 추가
-			}
+				// TODO : 몬스터가 사망했을 때 경험치 추가
+				spawnManager.DisplayScore(score);
+
+				//if (GameManager.Sound.isLive)
+				//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);
+			}	
 		}
 	}
 
@@ -240,6 +254,8 @@ public class EnemyState : MonoBehaviour, IDamageable
 		if (curHP <= 0) {
 			curHP = 0;
 			state = State.DIE;
+				
+			
 		}
 	}
 }

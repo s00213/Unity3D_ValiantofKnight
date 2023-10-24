@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
@@ -9,6 +10,11 @@ public class SpawnManager : MonoBehaviour
 	public int maxMonsters = 10; // 오브젝트 풀(Object Pool)에 생성할 몬스터의 최대 개수
 	public List<GameObject> monster; // 몬스터 프리팹을 연결할 변수
 	public float createTime = 1f; // 몬스터의 생성 간격
+
+	[Header("UI")]
+	public TMP_Text scoreText;
+	public int totalScore;
+	
 
 	void Start()
 	{
@@ -26,6 +32,10 @@ public class SpawnManager : MonoBehaviour
 
 		// 일정한 시간 간격으로 함수를 호출
 		InvokeRepeating("CreateMonster", 2.0f, createTime);
+
+		// 스코어 점수 출력
+		totalScore = PlayerPrefs.GetInt("Total_Score", 0);
+		DisplayScore(0);
 	}
 
 	void CreateMonster()
@@ -89,5 +99,12 @@ public class SpawnManager : MonoBehaviour
 			}
 		}
 		return null;
+	}
+
+	public void DisplayScore(int score)
+	{
+		totalScore += score;
+		scoreText.text = "SCORE   :   " + totalScore.ToString();
+		PlayerPrefs.SetInt("Total_Score", totalScore);
 	}
 }

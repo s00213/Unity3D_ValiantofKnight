@@ -44,8 +44,8 @@ public class DialogHandler : MonoBehaviour
 		{
 			dialogUI.SetActive(true);
 			canAtivateBox = true;
-			DialogSystem.instance.SetNPCName(npcName);
-			DialogSystem.instance.ActivateDialog(sentences);
+			DialogSystem.Dialog.SetNPCName(npcName);
+			DialogSystem.Dialog.ActivateDialog(sentences);
 		}
 	}
 }
