@@ -10,14 +10,35 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 	private Transform previousParent;       // 해당 오브젝트가 직전에 소속되어 있었던 부모 Transfron
 	private RectTransform rect;             // UI 위치 제어를 위한 RectTransform
 	private CanvasGroup canvasGroup;        // UI의 알파값과 상호작용 제어를 위한 CanvasGroup
+	ConsumableItem consumableItem;
 
 	private void Awake()
 	{
 		canvas = FindObjectOfType<Canvas>().transform;
 		rect = GetComponent<RectTransform>();
 		canvasGroup = GetComponent<CanvasGroup>();
+		consumableItem=GetComponent<ConsumableItem>();
 	}
 
+	private void Update()
+	{
+		if(Input.GetMouseButtonDown(1))
+		{
+			if (consumableItem.consumableData.itemName.Contains("Portion"))
+			{
+				if (DataManager.instance.HPpotionCount >= 2)
+				{
+					DataManager.instance.HPpotionCount--;
+				}
+				else if (DataManager.instance.HPpotionCount == 1)
+				{
+					DataManager.instance.HPpotionCount++;
+					Inventory.instance.RemoveItem(DataManager.instance.consumableData);
+				}
+			}
+			
+		}
+	}
 	/// <summary>
 	/// 현재 오브젝트를 드래그하기 시작할 때 1회 호출
 	/// </summary>

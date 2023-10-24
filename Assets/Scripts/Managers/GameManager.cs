@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
 	private static SceneManager sceneManager;
 	private static SoundManager soundManager;
 
-
 	public static GameManager Instance { get { return instance; } }
 	public static ResourceManager Resource { get { return resourceManager; } }
 	public static PoolManager Pool { get { return poolManager; } }
@@ -68,5 +67,21 @@ public class GameManager : MonoBehaviour
 		soundObject.name = "SoundManager";
 		soundObject.transform.parent = transform;
 		soundManager = soundObject.AddComponent<SoundManager>();	
+	}
+
+	// 게임의 종료 여부를 저장할 멤버 변수
+	private bool isGameOver;
+	// 게임의 종료 여부를 저장할 프로퍼티
+	public bool IsGameOver
+	{
+		get { return isGameOver; }
+		set
+		{
+			isGameOver = value;
+			if (isGameOver)
+			{
+				CancelInvoke("CreateMonster");
+			}
+		}
 	}
 }

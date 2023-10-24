@@ -47,6 +47,7 @@ public class Inventory : MonoBehaviour
 
 	private void Start()
 	{
+		invectoryActivated = false;
 		FreshSlot();
 	}
 
@@ -55,15 +56,18 @@ public class Inventory : MonoBehaviour
 		// 인벤토리 시스템 열고 닫는 단축키 : I
 		if (Input.GetKeyDown(KeyCode.I))
 		{
-			Debug.Log("I를 눌렀음, Open Inventory");
-			inventoryUI.SetActive(true);
-			invectoryActivated = true;
-		}
-		else if (Input.GetKeyDown(KeyCode.I))
-		{
-			Debug.Log("I를 눌렀음, Close Inventory");
-			inventoryUI.SetActive(false);
-			invectoryActivated = false;
+			if (invectoryActivated)
+			{
+				Debug.Log("I를 눌렀음, Close Inventory");
+				inventoryUI.SetActive(false);
+				invectoryActivated = false;
+			}
+			else
+			{
+				Debug.Log("I를 눌렀음, Open Inventory");
+				inventoryUI.SetActive(true);
+				invectoryActivated = true;
+			}
 		}
 	}
 
@@ -84,6 +88,7 @@ public class Inventory : MonoBehaviour
 	// 아이템 추가
 	public void AddItem(Item _item)
 	{
+		print(_item.ToString());
 		if (itemsList.Count < slots.Length)
 		{
 			itemsList.Add(_item);
@@ -98,6 +103,7 @@ public class Inventory : MonoBehaviour
     // 아이템 제거
     public void RemoveItem(Item _item)
     {
-		
-    }  
+		itemsList.Remove(_item);
+		FreshSlot();
+	}  
 }

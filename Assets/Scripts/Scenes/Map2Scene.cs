@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Map1Scene : BaseScene
+public class Map2Scene : BaseScene
 {
-	//[SerializeField] private GameObject playerPrefabs;
-	//[SerializeField] private GameObject petPrefabs;
-	//[SerializeField] private Transform playerSpawnPointPosition;
-	//[SerializeField] private Transform petSpawnPointPosition;
+	//[SerializeField] GameObject playerPrefabs;
+	//[SerializeField] GameObject petPrefabs;
+	//[SerializeField] Transform playerSpawnPointPosition;
+	//[SerializeField] Transform petSpawnPointPosition;
 
 	protected override IEnumerator LoadingRoutine()
 	{
@@ -15,7 +15,7 @@ public class Map1Scene : BaseScene
 		GameManager.UI.UIRestart();
 		Debug.Log("UI 재로딩");
 		progress = 0.0f;
-		// 게임 시간은 멈춰있으니 실제 시간만큼 흘러가게 함
+		//// 게임 시간은 멈춰있으니 실제 시간만큼 흘러가게 함
 		yield return new WaitForSecondsRealtime(1f);
 
 		ReLoadPool();
@@ -27,12 +27,13 @@ public class Map1Scene : BaseScene
 		progress = 0.4f;
 		yield return new WaitForSecondsRealtime(1f);
 
+		Debug.Log("플레이어 배치");
+		progress = 0.6f;
+
 		//GameObject player = Instantiate(playerPrefabs);
 		//player.transform.position = playerSpawnPointPosition.position;
 		//GameObject pet = Instantiate(petPrefabs);
 		//pet.transform.position = playerSpawnPointPosition.position;
-		Debug.Log("플레이어, 펫 배치");
-		progress = 0.6f;
 
 		yield return new WaitForSecondsRealtime(1f);
 

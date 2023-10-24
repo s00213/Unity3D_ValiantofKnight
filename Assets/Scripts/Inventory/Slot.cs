@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Slot : MonoBehaviour
 {
-	[SerializeField] Image image;
+	[SerializeField] private Image image;
+	[SerializeField] private TMP_Text AmountText;
 
 	private Item _item;
 	public Item item
@@ -28,4 +30,5 @@ public class Slot : MonoBehaviour
 			}
 		}
 	}
+
 }

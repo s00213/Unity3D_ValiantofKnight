@@ -16,9 +16,9 @@ public class QuestManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
-			print(CheckIfComplete("Map1의 슬라임 몬스터 5마리 사냥하기"));
-			MarkQuestComplete("Map2의 스켈레톤 몬스터 10마리 사냥하기");
-			MarkQuestIncomplete("Map3의  보스 몬스터 10마리 사냥하기");
+			Debug.Log(CheckIfComplete("퀘스트1"));
+			MarkQuestComplete("퀘스트2");
+			MarkQuestIncomplete("퀘스트3");
 		}
 	}
 

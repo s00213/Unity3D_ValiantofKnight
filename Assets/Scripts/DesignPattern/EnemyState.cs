@@ -9,6 +9,7 @@ using UnityEngine.UI;
 /// <summary>
 /// FSM
 /// </summary>
+
 public class EnemyState : MonoBehaviour, IDamageable
 {
 	// Enemy 상태 정보
@@ -30,21 +31,25 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 	[Header("UI")]
 	[SerializeField] private Slider HPSlider;
-	//[SerializeField] private TMP_Text HPText;
 
 	private Transform monster; // Enemy
 	private Transform player; // Enemy의 추적 대상
 	private NavMeshAgent navMeshAgent;
 	private Animator animator;
 
-	//private PlayerState playerState; // Player의 데이터 가져옴
-	PlayerAttacker playerAttacker;
+	private PlayerState playerState; // Player의 데이터 가져옴
+	private PlayerAttacker playerAttacker;
 	public int damage; // Enemy가 Player에게 가하는 피해
 
 	private void OnEnable()
 	{
+		HPSlider.maxValue = HP;
+		curHP = HP;
+		HPSlider.value = curHP;
+		state = State.IDLE;
+
 		// 이벤트 발생 시 수행할 함수 연결
-		//PlayerState.OnPlayerDie += this.OnPlayerDie;
+		PlayerState.OnPlayerDie += OnPlayerDie;
 
 		// 상태 체크하는 코루틴 시작
 		StartCoroutine(EnemyCheckRoutine());
@@ -56,7 +61,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	void OnDisable()
 	{
 		// 기존에 연결된 함수 해제
-		//PlayerState.OnPlayerDie -= this.OnPlayerDie;
+		PlayerState.OnPlayerDie -= this.OnPlayerDie;
 	}
 
 	private void Awake()
@@ -70,14 +75,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		// Player의 데이터를 가져옴
-		//playerState = FindObjectOfType<PlayerState>();
-	}
-
-	private void Start()
-	{
-		HPSlider.maxValue = HP;
-		curHP = HP;
-		HPSlider.value = curHP;
+		playerState = FindObjectOfType<PlayerState>();
 	}
 
 	void Update()
@@ -149,9 +147,12 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 				// ATTACK 상태
 				case State.ATTACK:
+					// 플레이어의 위치를 향하도록 몬스터의 회전을 조정
+					transform.LookAt(player.position);
 					animator.SetBool("IsAttack", true);
+					yield return new WaitForSeconds(1f);
 					// Player에게 데미지를 줌
-					//playerState.TakeDamage(attackDamage);
+					playerState.TakeDamage(damage);
 					Debug.Log("State.ATTACK");
 					break;
 
@@ -236,5 +237,9 @@ public class EnemyState : MonoBehaviour, IDamageable
 	public void TakeDamage(int damage)
 	{
 		curHP -= damage;
+		if (curHP <= 0) {
+			curHP = 0;
+			state = State.DIE;
+		}
 	}
 }

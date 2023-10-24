@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class PetMover : MonoBehaviour
 {
-	[SerializeField] float keepDistance;
+	[SerializeField] private float keepDistance;
 
 	private NavMeshAgent agent;
 	private Animator animator;

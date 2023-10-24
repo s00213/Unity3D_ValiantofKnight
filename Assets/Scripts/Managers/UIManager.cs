@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
 	private Stack<PopUpUI> popUpStack; // 편리하게 UI 관리를 위힌 Stack 구조 사용
 
 	private Canvas windowCanvas;
-
 	private Canvas inGameCanvas;
 
 	private void Awake()
@@ -34,6 +33,12 @@ public class UIManager : MonoBehaviour
 		inGameCanvas = GameManager.Resource.Instantiate<Canvas>("UI/Canvas");
 		inGameCanvas.gameObject.name = "InGameCanvas";
 		inGameCanvas.sortingOrder = 0;
+	}
+
+	public void UIRestart()
+	{
+		Destroy(eventSystem.gameObject);
+		Awake();
 	}
 
 	// TODO : 만든 ShowPopUpUI은 일반화를 적용하면 PopUpUI를 상속받는 다른 팝업 UI를 반환받게끔 함

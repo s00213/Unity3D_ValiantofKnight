@@ -73,13 +73,6 @@ public class PlayerAttacker : MonoBehaviour
 			transform.LookAt(target.transform);
 	}
 
-	//public void GetDamage(int dmg)
-	//{
-	//	HP -= dmg;
-	//	if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack02") == false)
-	//	anim.Play("GetHit", -1, 0);
-	//}
-
 	// 각도에 대한 기즈모
 	private void OnDrawGizmosSelected()
 	{

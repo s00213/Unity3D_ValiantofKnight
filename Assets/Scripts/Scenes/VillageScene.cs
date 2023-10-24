@@ -1,21 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class VillageScene : BaseScene
 {
 	//public GameObject playerPrefabs;
 	//public Transform playerPosition;
 
+	private void Awake()
+	{
+		Debug.Log("TitleScene Init");		
+	}
+
 	protected override IEnumerator LoadingRoutine()
 	{
-		// 임의 페이크 로딩
-		Debug.Log("랜덤 맵 생성");
+		// UI 재로딩
+		ReLoadUI();
+		Debug.Log("UI 재로딩");
 		progress = 0.0f;
 		//// 게임 시간은 멈춰있으니 실제 시간만큼 흘러가게 함
 		yield return new WaitForSecondsRealtime(1f);
 
-		Debug.Log("랜덤 몬스터 생성");
+		ReLoadPool();
+		Debug.Log("Pool 재로딩");
 		progress = 0.2f;
 		yield return new WaitForSecondsRealtime(1f);
 
@@ -31,5 +39,15 @@ public class VillageScene : BaseScene
 
 		Debug.Log("로딩 완료");
 		progress = 1.0f;
+	}
+
+	private void ReLoadUI()
+	{
+		GameManager.UI.UIRestart();
+	}
+
+	private void ReLoadPool()
+	{
+		GameManager.Pool.PoolRestart();
 	}
 }
