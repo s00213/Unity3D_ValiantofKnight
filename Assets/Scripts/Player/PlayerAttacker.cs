@@ -47,6 +47,7 @@ public class PlayerAttacker : MonoBehaviour
 
 	// 범위 공격
 	// -> 내적, 외적
+	// 범위 공격
 	public void AttackTiming()
 	{
 		// 1. 범위 안에 있는지
