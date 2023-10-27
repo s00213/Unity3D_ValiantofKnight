@@ -65,9 +65,6 @@ public class PlayerState : MonoBehaviour
 		if (curHP <= 0)
 		{			
 			PlayerDie();
-
-			GameManager.Scene.LoadScene(sceneToLoad);
-			Debug.Log("Enter the " + sceneToLoad);
 		}
 
 		// 현재 HP와 최대 HP 텍스트로 표시됨
@@ -107,15 +104,13 @@ public class PlayerState : MonoBehaviour
 	{
 		Debug.Log("Player Die !");
 
-		// 주인공 사망 이벤트 호출(발생)
+		// 주인공 사망 이벤트 호출(적이 기뻐함)
 		OnPlayerDie();
 		isDie = true;
-		
+
 		// 애니메이터에서 "IsDie" 트리거를 설정하여 사망 애니메이션 재생
-		if (animator != null)
-		{
-			animator.SetTrigger("IsDie");
-		}
+		Debug.Assert(animator != null);
+		animator.SetTrigger("IsDie");
 
 		StartCoroutine(WaitForAnimationToEndRoutine());		
 	}

@@ -195,30 +195,6 @@ public class EnemyState : MonoBehaviour, IDamageable
 		}
 	}
 
-	// 플레이어에게 데미지를 입으면 HP 차감되고 피격 리액션 실행됨
-	private void OnTriggerEnter(Collider coll)
-	{
-		if (curHP >= 0.0f && coll.CompareTag("Weapons"))
-		{
-			curHP -= damage;
-			HPSlider.value = curHP;
-			// 피격 리액션 애니메이션 실행
-			animator.SetTrigger("GetHit");
-			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Hit);
-			Debug.Log($"Enemy HP = {curHP / HP}");
-
-			if (curHP <= 0.0f)
-			{
-				state = State.DIE;
-				// TODO : 몬스터가 사망했을 때 경험치 추가
-				spawnManager.DisplayScore(score);
-
-				//if (GameManager.Sound.isLive)
-				//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);
-			}	
-		}
-	}
-
 	// TRACE, ATTACK 기즈모
 	private void OnDrawGizmos()
 	{
@@ -248,14 +224,32 @@ public class EnemyState : MonoBehaviour, IDamageable
 		animator.SetTrigger("PlayerDie");
 	}
 
+	// 플레이어에게 데미지를 입으면 HP 차감되고 피격 리액션 실행됨
 	public void TakeDamage(int damage)
 	{
+		if (state == State.DIE)
+		{
+			return;
+		}
+
+		// 피격 리액션 애니메이션 실행
+		animator.SetTrigger("GetHit");
+
+		//GameManager.Sound.PlaySfx(SoundManager.Sfx.Hit);
 		curHP -= damage;
-		if (curHP <= 0) {
+		if (curHP <= 0)
+		{
 			curHP = 0;
 			state = State.DIE;
-				
-			
+			spawnManager.DisplayScore(score);
+
+			// TODO : 몬스터가 사망했을 때 경험치 추가
+
+			//if (GameManager.Sound.isLive)
+			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);
 		}
+
+		Debug.Log($"Enemy HP = {curHP / HP}");
+		HPSlider.value = curHP;
 	}
 }
