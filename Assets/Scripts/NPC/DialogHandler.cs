@@ -23,8 +23,8 @@ public class DialogHandler : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			triggerText.SetActive(true);
 			canAtivateBox = true;
+			triggerText.gameObject.SetActive(true);			
 		}
 	}
 
@@ -32,16 +32,17 @@ public class DialogHandler : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			triggerText.SetActive(false);
 			canAtivateBox = false;
+			triggerText.gameObject.SetActive(false);			
 			dialogUI.SetActive(false);
 		}
 	}
 
 	private void TalkToNPC()
-	{	
+	{
 		if (canAtivateBox && Input.GetKeyDown(KeyCode.C))
 		{
+			triggerText.gameObject.SetActive(false);
 			dialogUI.SetActive(true);
 			canAtivateBox = true;
 			DialogSystem.Dialog.SetNPCName(npcName);

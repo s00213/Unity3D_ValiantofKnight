@@ -1,13 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-
-public class Item : ScriptableObject
+[CreateAssetMenu]
+public class ItemData : ScriptableObject
 {
-    public string itemName;
-    public int price;
-    public Sprite itemIcon;
-    public GameObject itemPrefab;
+	[field: SerializeField]
+	public bool isStackable { get; set; }
 
-    public bool isStackable;
-    public int amount;
+	public int ID => GetInstanceID();
+
+	[field: SerializeField]
+	public int maxStackSize { get; set; } = 1;
+
+	[field: SerializeField]
+	public string Name { get; set; }
+
+	[field: SerializeField]
+	[field: TextArea]
+	public string description { get; set; }
+
+	[field: SerializeField]
+	public Sprite itemImage { get; set; }
+
+	[field: SerializeField]
+	public GameObject itemPrefab { get; set; }
 }

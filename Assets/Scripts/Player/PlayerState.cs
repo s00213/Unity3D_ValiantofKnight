@@ -9,13 +9,13 @@ using UnityEngine.UI;
 public class PlayerState : MonoBehaviour
 {
 	[Header("PlayerStats")]
-	public int curHP; 
-	public int maxHP; 
+	public float curHP;
+	public float maxHP;
+	[SerializeField] private FloatValueSO currentHealth;
 
    [Header("UI")]
 	public Slider HPSlider;
 	public TMP_Text HPText;
-	public TMP_Text scoreText;
 
 	[Header("")]
 	public TMP_Text hitDamageText;
@@ -33,6 +33,7 @@ public class PlayerState : MonoBehaviour
 
 	public void Start()
 	{
+
 		HPSlider.maxValue = maxHP;
 		curHP = maxHP;
 		HPSlider.value = curHP;
@@ -48,9 +49,8 @@ public class PlayerState : MonoBehaviour
 	{
 		animator = GetComponent<Animator>();
 	}
-
 	// 데미지 받으면 HP 감소
-	public void TakeDamage(int damage)
+	public void TakeDamage(float damage)
 	{
 		// 데미지가 현재 HP보다 큰 경우, 데미지를 현재 HP로 설정
 		if (damage > curHP)
@@ -63,7 +63,7 @@ public class PlayerState : MonoBehaviour
 		HPSlider.value = curHP;
 
 		if (curHP <= 0)
-		{			
+		{
 			PlayerDie();
 		}
 
@@ -86,18 +86,22 @@ public class PlayerState : MonoBehaviour
 	}
 
 	// 힐 아이템 먹으면 HP 증가
-	//public void Heal(int HP)
-	//{
-	//	curHP += HP;
-	//	HPSlider.value = curHP;
+	public void Heal(int healthBoost)
+	{
+		curHP += healthBoost;
+		HPSlider.value = curHP;
 
-	//	if (curHP > maxHP)
-	//	{
-	//		curHP = maxHP;
-	//	}
+		int health = Mathf.RoundToInt(currentHealth.Value * maxHP);
+		int val = health + healthBoost;
+		currentHealth.Value = (val > maxHP ? maxHP : val / maxHP);
 
-	//	HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
-	//}
+		if (curHP > maxHP)
+		{
+			curHP = maxHP;
+		}
+
+		HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
+	}
 
 	// Player의 사망 처리
 	private void PlayerDie()
