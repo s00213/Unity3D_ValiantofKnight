@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Resources;
+using TMPro;
 using UnityEditor.EditorTools;
 using UnityEditor.SearchService;
 using UnityEngine;

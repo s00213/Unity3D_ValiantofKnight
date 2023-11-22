@@ -14,7 +14,7 @@ public class SpawnManager : MonoBehaviour
 	[Header("UI")]
 	public TMP_Text scoreText;
 	public int totalScore;
-	
+	public int score;
 
 	void Start()
 	{

@@ -34,10 +34,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 
 	[Header("UI")]
 	[SerializeField] private Slider HPSlider;
-
-	[Header("")]
-	[SerializeField] private int score = 50;
-
+	[SerializeField] private TextMeshProUGUI stateText;
 
 	private Transform monster; // Enemy
 	private Transform player; // Enemy의 추적 대상
@@ -142,6 +139,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					navMeshAgent.isStopped = true;
 					animator.SetBool("IsMove", false);
 					Debug.Log("State.IDLE");
+					stateText.text = "State: IDLE";
 					break;
 
 				// TRACE 상태
@@ -152,6 +150,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					animator.SetBool("IsMove", true);
 					animator.SetBool("IsAttack", false);
 					Debug.Log("State.TRACE");
+					stateText.text = "State: TRACE";
 					break;
 
 				// ATTACK 상태
@@ -163,6 +162,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					// Player에게 데미지를 줌
 					playerState.TakeDamage(damage);
 					Debug.Log("State.ATTACK");
+					stateText.text = "State: ATTACK";
 					break;
 
 				// DIE 상태
@@ -189,6 +189,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					GetComponent<Collider>().enabled = true;
 					// 몬스터를 비활성화
 					this.gameObject.SetActive(false);
+					stateText.text = "State: DIE";
 					break;
 			}
 			yield return new WaitForSeconds(0.1f);
@@ -241,9 +242,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 		{
 			curHP = 0;
 			state = State.DIE;
-			spawnManager.DisplayScore(score);
-
-			// TODO : 몬스터가 사망했을 때 경험치 추가
+			spawnManager.DisplayScore(spawnManager.score);
 
 			//if (GameManager.Sound.isLive)
 			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);

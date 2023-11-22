@@ -71,7 +71,7 @@ public class DialogSystem : MonoBehaviour
 	}
 
 	public void ActivateDialog(string[] newSentenceToUse)
-	{ 
+	{
 		dialogSentences = newSentenceToUse;
 		currentSentence = 0;
 

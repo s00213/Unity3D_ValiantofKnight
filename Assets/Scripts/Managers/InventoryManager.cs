@@ -1,4 +1,4 @@
-using Inventory.Model;
+using Inventory;
 using Inventory.UI;
 using System;
 using System.Collections;
@@ -10,19 +10,12 @@ namespace Inventory
 {
     public class InventoryManager : MonoBehaviour
     {
-        [SerializeField]
-        private UIInventoryPage inventoryUI;
+        [SerializeField] private UIInventoryPage inventoryUI;
+        [SerializeField] private InventoryData inventoryData;
+		[SerializeField] private AudioClip dropClip;
+		[SerializeField] private AudioSource audioSource;
 
-        [SerializeField]
-        private InventorySO inventoryData;
-
-        public List<InventoryItem> initialItems = new List<InventoryItem>();
-
-        [SerializeField]
-        private AudioClip dropClip;
-
-        [SerializeField]
-        private AudioSource audioSource;
+		public List<InventoryItem> initialItems = new List<InventoryItem>();
 
         private void Start()
         {
@@ -68,11 +61,11 @@ namespace Inventory
                 return;
 
             IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null)
+            if (itemAction != null)
             {
-                
+
                 inventoryUI.ShowItemAction(itemIndex);
-                inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
+                //inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
             }
 
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;
@@ -132,7 +125,7 @@ namespace Inventory
                 inventoryUI.ResetSelection();
                 return;
             }
-            ItemSO item = inventoryItem.item;
+            ItemData item = inventoryItem.item;
             string description = PrepareDescription(inventoryItem);
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, description);
 		}

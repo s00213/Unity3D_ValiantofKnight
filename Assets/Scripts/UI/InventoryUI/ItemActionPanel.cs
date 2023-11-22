@@ -8,8 +8,7 @@ namespace Inventory.UI
 {
     public class ItemActionPanel : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject buttonPrefab;
+        [SerializeField] private GameObject buttonPrefab;
 
         public void AddButon(string name, Action onClickAction)
         {
@@ -18,11 +17,11 @@ namespace Inventory.UI
             button.GetComponentInChildren<TMPro.TMP_Text>().text = name;
         }
 
-        public void Toggle(bool val)
+        public void Toggle(bool value)
         {
-            if (val == true)
+            if (value == true)
                 RemoveOldButtons();
-            gameObject.SetActive(val);
+            gameObject.SetActive(value);
         }
 
         public void RemoveOldButtons()

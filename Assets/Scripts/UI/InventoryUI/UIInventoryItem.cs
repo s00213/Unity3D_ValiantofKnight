@@ -8,20 +8,13 @@ using UnityEngine.EventSystems;
 
 namespace Inventory.UI
 {
-    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler,
-        IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
+    public class UIInventoryItem : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDropHandler, IDragHandler
     {
-        [SerializeField]
-        private Image itemImage;
-        [SerializeField]
-        private TMP_Text quantityTxt;
+        [SerializeField] private Image itemImage;
+        [SerializeField] private TMP_Text quantityTxt;
+        [SerializeField] private Image borderImage;
 
-        [SerializeField]
-        private Image borderImage;
-
-        public event Action<UIInventoryItem> OnItemClicked,
-            OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag,
-            OnRightMouseBtnClick;
+        public event Action<UIInventoryItem> OnItemClicked, OnItemDroppedOn, OnItemBeginDrag, OnItemEndDrag, OnRightMouseButtonClick;
 
         private bool empty = true;
 
@@ -30,15 +23,18 @@ namespace Inventory.UI
             ResetData();
             Deselect();
         }
+
         public void ResetData()
         {
             itemImage.gameObject.SetActive(false);
             empty = true;
         }
+
         public void Deselect()
         {
             borderImage.enabled = false;
         }
+
         public void SetData(Sprite sprite, int quantity)
         {
             itemImage.gameObject.SetActive(true);
@@ -56,7 +52,7 @@ namespace Inventory.UI
         {
             if (pointerData.button == PointerEventData.InputButton.Right)
             {
-                OnRightMouseBtnClick?.Invoke(this);
+				OnRightMouseButtonClick?.Invoke(this);
             }
             else
             {

@@ -11,7 +11,7 @@ public class PlayerState : MonoBehaviour
 	[Header("PlayerStats")]
 	public float curHP;
 	public float maxHP;
-	[SerializeField] private FloatValueSO currentHealth;
+	[SerializeField] private FloatValueData currentHealth;
 
    [Header("UI")]
 	public Slider HPSlider;

@@ -3,28 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Environment
-  - Weapons
-  - Enemy
-  - Pet
-  - ITEM
-  - Slot
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Environment
-  - Enemy
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Weapon
+  - Target
+  - Projectile
+  - Player
+  - PlayerCollisionOnly
   - 
   - 
   - 

@@ -1,12 +1,11 @@
-using Inventory.Model;
+using Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PickUpSystem : MonoBehaviour
 {
-	[SerializeField]
-	private InventorySO inventoryData;
+	[SerializeField]private InventoryData inventoryData;
 
 	private void OnTriggerStay(Collider other)
 	{

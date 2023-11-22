@@ -38,7 +38,7 @@ namespace Inventory.UI
                 uiItem.OnItemBeginDrag += HandleBeginDrag;
                 uiItem.OnItemDroppedOn += HandleSwap;
                 uiItem.OnItemEndDrag += HandleEndDrag;
-                uiItem.OnRightMouseBtnClick += HandleShowItemActions;
+                uiItem.OnRightMouseButtonClick += HandleShowItemActions;
             }
         }
 
@@ -58,8 +58,7 @@ namespace Inventory.UI
             listOfUIItems[itemIndex].Select();
         }
 
-        public void UpdateData(int itemIndex,
-            Sprite itemImage, int itemQuantity)
+        public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
         {
             if (listOfUIItems.Count > itemIndex)
             {

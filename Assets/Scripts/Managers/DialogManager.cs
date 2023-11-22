@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using TMPro;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor.Rendering;
 using UnityEngine;
 
-public class DialogHandler : MonoBehaviour
+public class DialogManager : MonoBehaviour
 {
 	[SerializeField] private GameObject triggerText;
 	[SerializeField] private GameObject dialogUI;
 	[SerializeField] private bool canAtivateBox;
+	[SerializeField] private TextMeshProUGUI dialogText;
+	[SerializeField] private TextMeshProUGUI nPCNameText;
 
 	[SerializeField, Multiline] private string npcName;
 	[SerializeField] private string[] sentences;

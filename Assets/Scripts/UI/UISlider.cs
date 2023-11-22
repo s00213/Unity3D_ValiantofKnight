@@ -6,11 +6,8 @@ using UnityEngine.UI;
 
 public class UISlider : MonoBehaviour
 {
-    [SerializeField]
-    private Image sliderImage;
-
-    [SerializeField]
-    private FloatValueSO floatValue;
+    [SerializeField] private Image sliderImage;
+    [SerializeField] private FloatValueData floatValue;
 
     private void OnEnable()
     {
