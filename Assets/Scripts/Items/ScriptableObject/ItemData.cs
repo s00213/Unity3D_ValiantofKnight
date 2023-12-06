@@ -20,10 +20,11 @@ namespace Inventory
     [Serializable]
     public struct ItemParameter : IEquatable<ItemParameter>
     {
-        public ItemParameterData itemParameter;
-        public float value;
+        public ItemParameterData itemParameter; // 매개변수 종류
+		public float value; // 매개변수 값
 
-        public bool Equals(ItemParameter other)
+		// 두 ItemParameter 구조체가 동일한지 비교
+		public bool Equals(ItemParameter other)
         {
             return other.itemParameter == itemParameter;
         }

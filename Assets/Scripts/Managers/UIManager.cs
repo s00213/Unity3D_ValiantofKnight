@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour
 		Awake();
 	}
 
-	// TODO : 만든 ShowPopUpUI은 일반화를 적용하면 PopUpUI를 상속받는 다른 팝업 UI를 반환받게끔 함
+	// 만든 ShowPopUpUI은 일반화를 적용하면 PopUpUI를 상속받는 다른 팝업 UI를 반환받게끔 함
 	public void ShowPopUpUI(PopUpUI popUpUI)
 	{
 		// 이전의 팝업 UI가 있다면 잠깐 안 보이게 함

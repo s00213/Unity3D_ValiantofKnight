@@ -40,8 +40,7 @@ namespace Inventory
             inventoryUI.ResetAllItems();
             foreach (var item in inventoryState)
             {
-                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, 
-                    item.Value.quantity);
+                inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
             }
         }
 
@@ -65,7 +64,6 @@ namespace Inventory
             {
 
                 inventoryUI.ShowItemAction(itemIndex);
-                //inventoryUI.AddAction(itemAction.ActionName, () => PerformAction(itemIndex));
             }
 
             IDestroyableItem destroyableItem = inventoryItem.item as IDestroyableItem;

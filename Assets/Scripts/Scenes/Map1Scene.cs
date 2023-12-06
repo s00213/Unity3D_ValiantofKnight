@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Map1Scene : BaseScene
 {
-	//[SerializeField] private GameObject playerPrefabs;
-	//[SerializeField] private GameObject petPrefabs;
-	//[SerializeField] private Transform playerSpawnPointPosition;
-	//[SerializeField] private Transform petSpawnPointPosition;
-
 	protected override IEnumerator LoadingRoutine()
 	{
 		// 임의 페이크 로딩
@@ -27,10 +22,6 @@ public class Map1Scene : BaseScene
 		progress = 0.4f;
 		yield return new WaitForSecondsRealtime(1f);
 
-		//GameObject player = Instantiate(playerPrefabs);
-		//player.transform.position = playerSpawnPointPosition.position;
-		//GameObject pet = Instantiate(petPrefabs);
-		//pet.transform.position = playerSpawnPointPosition.position;
 		Debug.Log("플레이어, 펫 배치");
 		progress = 0.6f;
 
