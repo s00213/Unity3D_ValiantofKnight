@@ -43,7 +43,7 @@ namespace Inventories
             return number;
         }
 
-        public void PickupItem()
+        public void PickupItem(string itemName)
         {
             bool foundSlot = inventory.AddToFirstEmptySlot(item, number);
             if (foundSlot)
