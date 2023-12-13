@@ -11,7 +11,6 @@ public class PlayerState : MonoBehaviour
 	[Header("PlayerStats")]
 	public float curHP;
 	public float maxHP;
-	[SerializeField] private FloatValueData currentHealth;
 
    [Header("UI")]
 	public Slider HPSlider;
@@ -88,19 +87,7 @@ public class PlayerState : MonoBehaviour
 	// »˙ æ∆¿Ã≈€ ∏‘¿∏∏È HP ¡ı∞°
 	public void Heal(int healthBoost)
 	{
-		curHP += healthBoost;
-		HPSlider.value = curHP;
-
-		int health = Mathf.RoundToInt(currentHealth.Value * maxHP);
-		int val = health + healthBoost;
-		currentHealth.Value = (val > maxHP ? maxHP : val / maxHP);
-
-		if (curHP > maxHP)
-		{
-			curHP = maxHP;
-		}
-
-		HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
+		
 	}
 
 	// Player¿« ªÁ∏¡ √≥∏Æ

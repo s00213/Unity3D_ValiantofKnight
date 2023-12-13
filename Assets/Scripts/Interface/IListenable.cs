@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Enemy
+/// Enemy의 청각 능력
 /// </summary>
 public interface IListenable
 {
