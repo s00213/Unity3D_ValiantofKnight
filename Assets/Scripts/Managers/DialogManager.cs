@@ -1,34 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using TMPro;
+using UI.Inventories;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DialogManager : MonoBehaviour
 {
-	[SerializeField] private GameObject triggerText;
+	[SerializeField] private TextMeshProUGUI triggerText;
 	[SerializeField] private GameObject dialogUI;
-	[SerializeField] private bool canAtivateBox;
 	[SerializeField] private TextMeshProUGUI dialogText;
 	[SerializeField] private TextMeshProUGUI nPCNameText;
+	[SerializeField] private GameObject quickSlots;
 
 	[SerializeField, Multiline] private string npcName;
 	[SerializeField] private string[] sentences;
 	[SerializeField] private int currentSentence;
 
-	private void Update()
-	{
-		TalkToNPC();
-	}
+	private bool isTriggered;
+
+	// 대화창 열릴 때 퀵슬롯 사라지게 함
+	public static event Action OnConversationStarted;
+	public static event Action OnConversationEnded;
 
 	private void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			canAtivateBox = true;
-			triggerText.gameObject.SetActive(true);			
+			triggerText.gameObject.SetActive(true);
+			triggerText.text = npcName + " 와 대화하려면 [ E ] 키를 누르세요";
 		}
 	}
 
@@ -36,19 +39,30 @@ public class DialogManager : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Player")
 		{
-			canAtivateBox = false;
-			triggerText.gameObject.SetActive(false);			
-			dialogUI.SetActive(false);
+			if (!isTriggered)
+			{
+				triggerText.text = "";
+				triggerText.gameObject.SetActive(false);
+				dialogUI.gameObject.SetActive(false);
+				OnConversationEnded?.Invoke();
+			}			
 		}
+	}
+
+	private void Update()
+	{
+		TalkToNPC();		
 	}
 
 	private void TalkToNPC()
 	{
-		if (canAtivateBox && Input.GetKeyDown(KeyCode.C))
+		if (isTriggered && Input.GetKeyDown(KeyCode.E))
 		{
+			triggerText.text = "";
 			triggerText.gameObject.SetActive(false);
-			dialogUI.SetActive(true);
-			canAtivateBox = true;
+			dialogUI.gameObject.SetActive(true);
+
+			OnConversationStarted?.Invoke();
 			DialogSystem.Dialog.SetNPCName(npcName);
 			DialogSystem.Dialog.ActivateDialog(sentences);
 		}

@@ -5,14 +5,15 @@ using TMPro;
 namespace Control
 {
 	[RequireComponent(typeof(Pickup))]
-	public class PickUpItem : MonoBehaviour//, IRaycastable
+	public class PickUpItem : MonoBehaviour
 	{
 		private Pickup pickup;
 		private InventorySystem inventorySystem;
 
 		public TMP_Text triggerText;
 		public string itemName;
-		private bool isTriggered;
+
+		private bool isTriggered = false;
 
 		private void Awake()
 		{
@@ -27,11 +28,11 @@ namespace Control
 
 		private void OnTriggerStay(Collider other)
 		{
-			if (isTriggered) 
-				return;
-
+			if (isTriggered)
+					return;
+			
 			triggerText.gameObject.SetActive(true);
-			triggerText.text = "아이템을 획득하려면 [ E ] 키를 누르세요 " + itemName;	
+			triggerText.text = "아이템을 획득하려면 [ E ] 키를 누르세요 " + itemName;
 			isTriggered = true;
 		}
 
@@ -57,8 +58,7 @@ namespace Control
 				{
 					Debug.Log("인벤토리가 꽉 찼습니다.");
 				}
-			}
-			
+			}			
 		}
 	}
 }

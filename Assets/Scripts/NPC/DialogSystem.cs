@@ -35,7 +35,7 @@ public class DialogSystem : MonoBehaviour
 
 	private void Start()
 	{
-		dialogUI.SetActive(false);
+		dialogUI.gameObject.SetActive(false);
 		dialogText.text = dialogSentences[currentSentence];
 	}
 
@@ -54,7 +54,7 @@ public class DialogSystem : MonoBehaviour
 
 				if (currentSentence >= dialogSentences.Length)
 				{
-					dialogUI.SetActive(false);
+					dialogUI.gameObject.SetActive(false);
 				}
 				else
 				{
@@ -76,7 +76,7 @@ public class DialogSystem : MonoBehaviour
 		currentSentence = 0;
 
 		dialogText.text = dialogSentences[currentSentence];
-		dialogUI.SetActive(true);
+		dialogUI.gameObject.SetActive(true);
 	}
 }
 

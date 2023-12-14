@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3659e8efe0cc34441a866cd12dff653e, type: 3}
-  m_Name: Coin
+  m_Name: AbilityScrollPaper
   m_EditorClassIdentifier: 
-  itemID: d4dabedb-853b-4527-a3b2-48e0fefda859
-  displayName: Coin
-  description: Coin
-  icon: {fileID: 21300054, guid: 9c2c642c47b2fc344ab143e21aedaca9, type: 3}
+  itemID: bed7f43a-1e97-4daa-9506-36716546024c
+  displayName: Ability Scroll Paper
+  description: A rolled-up paper
+  icon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
   pickup: {fileID: 5430391504329914576, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 1
   consumable: 0
