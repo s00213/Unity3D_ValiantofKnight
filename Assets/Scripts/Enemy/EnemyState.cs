@@ -1,3 +1,4 @@
+using Inventories;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	private PlayerState playerState; // Player의 데이터 가져옴
 	private PlayerAttacker playerAttacker;
 	private SpawnManager spawnManager;
+	private ItemRandomDropper itemRandomDropper;
 	public int damage; // Enemy가 Player에게 가하는 피해
 
 	private void OnEnable()
@@ -76,12 +78,14 @@ public class EnemyState : MonoBehaviour, IDamageable
 		navMeshAgent = GetComponent<NavMeshAgent>();
 		animator = GetComponent<Animator>();
 
+
 		// 추적 대상 Tag "Player"
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 
 		// Player의 데이터를 가져옴
 		playerState = FindObjectOfType<PlayerState>();
 		spawnManager = FindObjectOfType<SpawnManager>();
+		itemRandomDropper = FindObjectOfType<ItemRandomDropper>();
 	}
 
 	private void Update()
@@ -178,6 +182,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					// 몬스터의 Collider 컴포넌트 비활성화
 					GetComponent<Collider>().enabled = false;
 
+
 					// 일정 시간 대기 후 오브젝트 풀링으로 환원
 					yield return new WaitForSeconds(3.0f);
 
@@ -190,6 +195,10 @@ public class EnemyState : MonoBehaviour, IDamageable
 					// 몬스터를 비활성화
 					this.gameObject.SetActive(false);
 					stateText.text = "State: DIE";
+					if (itemRandomDropper != null)
+					{
+						itemRandomDropper.RandomDrop();
+					}
 					break;
 			}
 			yield return new WaitForSeconds(0.1f);
@@ -242,7 +251,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 		{
 			curHP = 0;
 			state = State.DIE;
-			spawnManager.DisplayScore(spawnManager.score);
+			//spawnManager.DisplayScore(spawnManager.score);
 
 			//if (GameManager.Sound.isLive)
 			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);

@@ -5,7 +5,6 @@ namespace Utils
 {
     public class PeristentObjectSpawner : MonoBehaviour
     {
-        [Tooltip("ΩÃ±€≈Ê")]
         [SerializeField] GameObject persistentObjectPrefab = null;
 
         static bool hasSpawned = false;

@@ -6,7 +6,7 @@ namespace SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        [SerializeField] KeyCode saveKey = KeyCode.S;
+        [SerializeField] KeyCode saveKey = KeyCode.R;
         [SerializeField] KeyCode loadKey = KeyCode.L;
         [SerializeField] KeyCode deleteKey = KeyCode.Delete;
         const string defaultSaveFile = "save";

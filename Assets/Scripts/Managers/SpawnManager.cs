@@ -35,7 +35,7 @@ public class SpawnManager : MonoBehaviour
 
 		// 스코어 점수 출력
 		totalScore = PlayerPrefs.GetInt("Total_Score", 0);
-		DisplayScore(0);
+		//DisplayScore(0);
 	}
 
 	void CreateMonster()
