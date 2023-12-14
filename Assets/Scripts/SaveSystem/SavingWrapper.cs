@@ -6,23 +6,21 @@ namespace SceneManagement
 {
     public class SavingWrapper : MonoBehaviour
     {
-        [SerializeField] private KeyCode saveKey = KeyCode.S;
-        [SerializeField] private KeyCode loadKey = KeyCode.L;
-        [SerializeField] private KeyCode deleteKey = KeyCode.Delete;
-		private const string defaultSaveFile = "save";
+        [SerializeField] KeyCode saveKey = KeyCode.S;
+        [SerializeField] KeyCode loadKey = KeyCode.L;
+        [SerializeField] KeyCode deleteKey = KeyCode.Delete;
+        const string defaultSaveFile = "save";
         
         private void Awake() 
         {
             StartCoroutine(LoadLastScene());
         }
 
-        private IEnumerator LoadLastScene() 
-        {
+        private IEnumerator LoadLastScene() {
             yield return GetComponent<SavingSystem>().LoadLastScene(defaultSaveFile);
         }
 
-        private void Update() 
-        {
+        private void Update() {
             if (Input.GetKeyDown(saveKey))
             {
                 Save();

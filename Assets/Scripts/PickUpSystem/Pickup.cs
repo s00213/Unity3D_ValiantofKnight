@@ -3,14 +3,14 @@
 namespace Inventories
 {
 	/// <summary>
-	/// 아이템 종류, 개수 등 픽업
+	/// 아이템 종류, 개수 등 픽업 데이터
 	/// </summary>
 	public class Pickup : MonoBehaviour
     {
-		private InventoryItem item;
-		private int number = 1;
+        InventoryItem item;
+        int number = 1;
 
-		private InventorySystem inventory;
+		InventorySystem inventory;
 
         private void Awake()
         {
@@ -19,10 +19,10 @@ namespace Inventories
         }
 
 		/// <summary>
-		/// Prefab을 생성한 후 필수 데이터를 설정함
+		/// 프리팹 생성 후 필수 데이터를 설정
 		/// </summary>
-		/// <param name="item"> 항목 </param>
-		/// <param name="number"> 수량 </param>
+		/// <param name="item"> 프리팹이 나타내는 항목 유형 </param>
+		/// <param name="number"> 항목 수 </param>
 		public void Setup(InventoryItem item, int number)
         {
             this.item = item;
@@ -43,7 +43,7 @@ namespace Inventories
             return number;
         }
 
-        public void PickupItem(string itemName)
+        public void PickupItem()
         {
             bool foundSlot = inventory.AddToFirstEmptySlot(item, number);
             if (foundSlot)

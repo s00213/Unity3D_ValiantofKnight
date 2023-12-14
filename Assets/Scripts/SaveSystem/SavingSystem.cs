@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using UnityEngine;
 
 namespace Saving
 {
-    /// <summary>
-    /// 저장 시스템
-    /// </summary>
-    public class SavingSystem : MonoBehaviour
+	/// <summary>
+	/// 저장 시스템
+	/// </summary>
+	public class SavingSystem : MonoBehaviour
     {
 		/// <summary>
 		/// saveFile로 저장됨

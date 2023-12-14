@@ -11,14 +11,12 @@ namespace Control
 		private InventorySystem inventorySystem;
 
 		public TMP_Text triggerText;
-		public string itemName;
-
-		private bool isTriggered = false;
+		private bool isTriggered;
 
 		private void Awake()
 		{
 			pickup = GetComponent<Pickup>();
-			
+
 			triggerText = GetComponentInChildren<TMP_Text>();
 			if (triggerText == null)
 			{
@@ -29,10 +27,10 @@ namespace Control
 		private void OnTriggerStay(Collider other)
 		{
 			if (isTriggered)
-					return;
-			
+				return;
+
 			triggerText.gameObject.SetActive(true);
-			triggerText.text = "아이템을 획득하려면 [ E ] 키를 누르세요 " + itemName;
+			triggerText.text = "아이템을 획득하려면 [ E ] 키를 누르세요 ";
 			isTriggered = true;
 		}
 
@@ -51,14 +49,15 @@ namespace Control
 			{
 				if (pickup.CanBePickedUp())
 				{
-					pickup.PickupItem(itemName);
+					pickup.PickupItem();
 					Destroy(gameObject);
 				}
 				else
 				{
 					Debug.Log("인벤토리가 꽉 찼습니다.");
 				}
-			}			
+			}
+
 		}
 	}
 }

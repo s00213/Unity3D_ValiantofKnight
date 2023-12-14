@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3659e8efe0cc34441a866cd12dff653e, type: 3}
+  m_Script: {fileID: 11500000, guid: be8358f0fcfcb22418d7b5d788e02cc4, type: 3}
   m_Name: HPPortion100
   m_EditorClassIdentifier: 
-  itemID: e28f073d-ac23-41cb-abf3-f2a071cd9b69
-  displayName: HP Portion 100
-  description: A potion that restores 100 health.
-  icon: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
-  pickup: {fileID: 5430391504329914576, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  itemID: ed2c65d2-fba1-4d95-a254-d8fc5fe91b78
+  displayName: HPPortion100
+  description: "\rA potion that restores 100 health"
+  icon: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
+  pickUp: {fileID: 6494234044896430859, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 1
   consumable: 1

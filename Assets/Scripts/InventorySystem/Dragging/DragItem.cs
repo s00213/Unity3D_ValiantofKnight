@@ -12,7 +12,7 @@ namespace UI.Dragging
 	public class DragItem<T> : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler where T : class
 	{
 		private Vector3 startPosition;
-		private Transform originalParent;
+        private Transform originalParent;
 		private IDragSource<T> source;
 
 		private Canvas parentCanvas;
@@ -56,8 +56,6 @@ namespace UI.Dragging
             {
                 DropItemIntoContainer(container);
             }
-
-            
         }
 
         private IDragDestination<T> GetContainer(PointerEventData eventData)
@@ -68,7 +66,6 @@ namespace UI.Dragging
 
                 return container;
             }
-
             return null;
         }
 
@@ -80,12 +77,11 @@ namespace UI.Dragging
             var sourceContainer = source as IDragContainer<T>;
 
 			// 교환이 불가능하다면
-			if (destinationContainer == null || sourceContainer == null || 
-                destinationContainer.GetItem() == null || 
+			if (destinationContainer == null || sourceContainer == null ||
+                destinationContainer.GetItem() == null ||
                 object.ReferenceEquals(destinationContainer.GetItem(), sourceContainer.GetItem()))
             {
                 AttemptSimpleTransfer(destination);
-
                 return;
             }
 
@@ -106,8 +102,8 @@ namespace UI.Dragging
             var sourceTakeBackNumber = CalculateTakeBack(removedSourceItem, removedSourceNumber, source, destination);
             var destinationTakeBackNumber = CalculateTakeBack(removedDestinationItem, removedDestinationNumber, destination, source);
 
-            // 필요한 경우 회수함
-            if (sourceTakeBackNumber > 0)
+			// 필요한 경우 회수함
+			if (sourceTakeBackNumber > 0)
             {
                 source.AddItems(removedSourceItem, sourceTakeBackNumber);
                 removedSourceNumber -= sourceTakeBackNumber;
@@ -118,17 +114,24 @@ namespace UI.Dragging
                 removedDestinationNumber -= destinationTakeBackNumber;
             }
 
-            // 교환을 할 수 없는 경우라면
-            if (source.MaxAcceptable(removedDestinationItem) < removedDestinationNumber ||
-                destination.MaxAcceptable(removedSourceItem) < removedSourceNumber)
+			// 교환을 할 수 없는 경우라면
+			if (source.MaxAcceptable(removedDestinationItem) < removedDestinationNumber ||
+                destination.MaxAcceptable(removedSourceItem) < removedSourceNumber ||
+                removedSourceNumber == 0)
             {
-                destination.AddItems(removedDestinationItem, removedDestinationNumber);
-                source.AddItems(removedSourceItem, removedSourceNumber);
+                if (removedDestinationNumber > 0)
+                {
+                    destination.AddItems(removedDestinationItem, removedDestinationNumber);
+                }
+                if (removedSourceNumber > 0)
+                {
+                    source.AddItems(removedSourceItem, removedSourceNumber);
+                }
                 return;
             }
 
-            // 교환을 함
-            if (removedDestinationNumber > 0)
+			// 교환을 함
+			if (removedDestinationNumber > 0)
             {
                 source.AddItems(removedDestinationItem, removedDestinationNumber);
             }
@@ -152,7 +155,6 @@ namespace UI.Dragging
                 destination.AddItems(draggingItem, toTransfer);
                 return false;
             }
-
             return true;
         }
 
@@ -167,13 +169,11 @@ namespace UI.Dragging
 
                 var sourceTakeBackAcceptable = removeSource.MaxAcceptable(removedItem);
 
-                // Abort and reset
                 if (sourceTakeBackAcceptable < takeBackNumber)
                 {
                     return 0;
                 }
             }
-
             return takeBackNumber;
         }
     }

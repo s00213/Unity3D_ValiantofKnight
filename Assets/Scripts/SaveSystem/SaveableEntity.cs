@@ -6,36 +6,17 @@ using UnityEngine;
 namespace Saving
 {
 	/// <summary>
-	/// 저장 가능한 모든 것을 저장함
+	/// 저장 가능한 모든 데이터를 저장함
 	/// </summary>
 	[ExecuteAlways]
     public class SaveableEntity : MonoBehaviour
     {
-        [Tooltip("모든 인스턴스를 원하는 경우가 아니면 프리팹에 설정하지 않기 ")]
+        [Tooltip("모든 인스턴스를 원하는 경우가 아니면 프리팹에 설정하지 않")]
         [SerializeField] string uniqueIdentifier = "";
 
         static Dictionary<string, SaveableEntity> globalLookup = new Dictionary<string, SaveableEntity>();
 
-#if UNITY_EDITOR
-		private void Update()
-		{
-			if (Application.IsPlaying(gameObject)) return;
-			if (string.IsNullOrEmpty(gameObject.scene.path)) return;
-
-			SerializedObject serializedObject = new SerializedObject(this);
-			SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
-
-			if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
-			{
-				property.stringValue = System.Guid.NewGuid().ToString();
-				serializedObject.ApplyModifiedProperties();
-			}
-
-			globalLookup[property.stringValue] = this;
-		}
-#endif
-
-		public string GetUniqueIdentifier()
+        public string GetUniqueIdentifier()
         {
             return uniqueIdentifier;
         }
@@ -72,6 +53,24 @@ namespace Saving
                 }
             }
         }
+
+#if UNITY_EDITOR
+        private void Update() {
+            if (Application.IsPlaying(gameObject)) return;
+            if (string.IsNullOrEmpty(gameObject.scene.path)) return;
+
+            SerializedObject serializedObject = new SerializedObject(this);
+            SerializedProperty property = serializedObject.FindProperty("uniqueIdentifier");
+            
+            if (string.IsNullOrEmpty(property.stringValue) || !IsUnique(property.stringValue))
+            {
+                property.stringValue = System.Guid.NewGuid().ToString();
+                serializedObject.ApplyModifiedProperties();
+            }
+
+            globalLookup[property.stringValue] = this;
+        }
+#endif
 
         private bool IsUnique(string candidate)
         {

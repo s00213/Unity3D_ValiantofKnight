@@ -3,21 +3,18 @@ using UnityEngine.EventSystems;
 
 namespace UI.Tooltips
 {
-	/// <summary>
-	/// 툴팁 생성기
-	/// </summary>
-	public abstract class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public abstract class TooltipSpawner : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        [Tooltip("툴팁 생성기")]
+        [Tooltip("툴팁 프리팹")]
         [SerializeField] private GameObject tooltipPrefab = null;
 
 		private GameObject tooltip = null;
 
-		/// <summary>
-		/// 툴팁의 정보를 업데이트할 때가 되면 호출됨
-		/// </summary>
 		public abstract void UpdateTooltip(GameObject tooltip);
         
+        /// <summary>
+        /// Return true when the tooltip spawner should be allowed to create a tooltip.
+        /// </summary>
         public abstract bool CanCreateTooltip();
 
         private void OnDestroy()
@@ -52,7 +49,7 @@ namespace UI.Tooltips
         }
 
         private void PositionTooltip()
-        {         
+        {
             Canvas.ForceUpdateCanvases();
 
             var tooltipCorners = new Vector3[4];

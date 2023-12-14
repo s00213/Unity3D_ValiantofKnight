@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3659e8efe0cc34441a866cd12dff653e, type: 3}
+  m_Script: {fileID: 11500000, guid: be8358f0fcfcb22418d7b5d788e02cc4, type: 3}
   m_Name: AbilityScrollPaper
   m_EditorClassIdentifier: 
-  itemID: bed7f43a-1e97-4daa-9506-36716546024c
+  itemID: ce0b4865-0943-4f52-9c2e-f01ebe78ee77
   displayName: Ability Scroll Paper
-  description: A rolled-up paper
+  description: Items that can improve or change the abilities of a character or item
   icon: {fileID: 21300000, guid: db427fab3e94daf4caa704d9314a77a1, type: 3}
-  pickup: {fileID: 5430391504329914576, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
-  stackable: 1
+  pickUp: {fileID: 6494234044896430859, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  stackable: 0
   consumable: 0

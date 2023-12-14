@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf35d0412e1e3a746a7ba763f53df6fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f20eb1792e8048a46bf5c7c520a3ea3b, type: 3}
   m_Name: Dagger
   m_EditorClassIdentifier: 
-  itemID: 0845f9d2-a9ed-46ec-b82e-7223f7066e8d
+  itemID: 0f42919f-4523-42e7-91a4-2a550e4ee8f1
   displayName: Dagger
-  description: A short and sharp weapon
+  description: ' A small sword with a short, sharp blade, mainly used for close combat'
   icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
-  pickup: {fileID: 5430391504329914576, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  pickUp: {fileID: 6494234044896430859, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 0
   allowedEquipLocation: 5

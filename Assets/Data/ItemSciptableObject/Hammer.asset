@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf35d0412e1e3a746a7ba763f53df6fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f20eb1792e8048a46bf5c7c520a3ea3b, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  itemID: c77192f3-e800-4adc-8ef6-b306fd012bc8
+  itemID: 55264ec7-0baf-4390-ae37-ac36268e5ece
   displayName: Hammer
-  description: A tool with a heavy metal head mounted at the end of a handle.
+  description: '
+
+    A tool with a heavy metal head at one end'
   icon: {fileID: 21300000, guid: ec22508be0cdfba4abbaeb770bef08aa, type: 3}
-  pickup: {fileID: 5430391504329914576, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  pickUp: {fileID: 6494234044896430859, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 0
   allowedEquipLocation: 5

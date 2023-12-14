@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using TMPro;
-using UI.Inventories;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -21,10 +20,6 @@ public class DialogManager : MonoBehaviour
 	[SerializeField] private int currentSentence;
 
 	private bool isTriggered;
-
-	// 대화창 열릴 때 퀵슬롯 사라지게 함
-	public static event Action OnConversationStarted;
-	public static event Action OnConversationEnded;
 
 	private void OnTriggerStay(Collider other)
 	{
@@ -44,7 +39,6 @@ public class DialogManager : MonoBehaviour
 				triggerText.text = "";
 				triggerText.gameObject.SetActive(false);
 				dialogUI.gameObject.SetActive(false);
-				OnConversationEnded?.Invoke();
 			}			
 		}
 	}
@@ -61,8 +55,6 @@ public class DialogManager : MonoBehaviour
 			triggerText.text = "";
 			triggerText.gameObject.SetActive(false);
 			dialogUI.gameObject.SetActive(true);
-
-			OnConversationStarted?.Invoke();
 			DialogSystem.Dialog.SetNPCName(npcName);
 			DialogSystem.Dialog.ActivateDialog(sentences);
 		}
