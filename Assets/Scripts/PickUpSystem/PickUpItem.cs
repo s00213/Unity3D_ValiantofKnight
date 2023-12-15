@@ -57,7 +57,6 @@ namespace Control
 					Debug.Log("¿Œ∫•≈‰∏Æ∞° ≤À √°Ω¿¥œ¥Ÿ.");
 				}
 			}
-
 		}
 	}
 }

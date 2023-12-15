@@ -35,7 +35,7 @@ public class DialogSystem : MonoBehaviour
 
 	private void Start()
 	{
-		dialogUI.gameObject.SetActive(false);
+		dialogUI.SetActive(false);
 		dialogText.text = dialogSentences[currentSentence];
 	}
 
@@ -48,19 +48,21 @@ public class DialogSystem : MonoBehaviour
 	{
 		if (dialogUI.activeInHierarchy)
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (Input.GetMouseButtonDown(0))				
 			{
+
 				currentSentence++;
 
 				if (currentSentence >= dialogSentences.Length)
 				{
-					dialogUI.gameObject.SetActive(false);
+					dialogUI.SetActive(false);
 				}
 				else
 				{
 					dialogText.text = dialogSentences[currentSentence];
 				}
-			}
+
+			}			
 		}
 	}
 
@@ -76,7 +78,12 @@ public class DialogSystem : MonoBehaviour
 		currentSentence = 0;
 
 		dialogText.text = dialogSentences[currentSentence];
-		dialogUI.gameObject.SetActive(true);
+		dialogUI.SetActive(true);
+	}
+
+	public bool isDialogBoxActive()
+	{ 
+		return dialogUI.activeInHierarchy;
 	}
 }
 
