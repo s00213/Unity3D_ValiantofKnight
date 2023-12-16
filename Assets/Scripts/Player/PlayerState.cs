@@ -1,3 +1,4 @@
+using Inventories;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ public class PlayerState : MonoBehaviour
 
 	private Animator animator;
 
+	bool movementStarted = false;
+
 	public void Start()
 	{
 
@@ -48,6 +51,16 @@ public class PlayerState : MonoBehaviour
 	{
 		animator = GetComponent<Animator>();
 	}
+
+	private void Update()
+	{
+		CheckSpecialAbilityKeys();
+		if (Input.GetMouseButtonUp(0))
+		{
+			movementStarted = false;
+		}
+	}
+
 	// 데미지 받으면 HP 감소
 	public void TakeDamage(float damage)
 	{
@@ -116,5 +129,35 @@ public class PlayerState : MonoBehaviour
 		// 애니메이션 재생이 끝난 후 게임 오버 씬으로 전환
 		GameManager.Scene.LoadScene(sceneToLoad);
 		Debug.Log("Enter the " + sceneToLoad);
+	}
+
+	// 퀵 슬롯 사용하는 키
+	private void CheckSpecialAbilityKeys()
+	{
+		var actionStore = GetComponent<ActionStore>();
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			actionStore.Use(0, gameObject);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			actionStore.Use(1, gameObject);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+			actionStore.Use(2, gameObject);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha4))
+		{
+			actionStore.Use(3, gameObject);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha5))
+		{
+			actionStore.Use(4, gameObject);
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha6))
+		{
+			actionStore.Use(5, gameObject);
+		}
 	}
 }

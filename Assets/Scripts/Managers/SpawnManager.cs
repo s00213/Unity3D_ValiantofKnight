@@ -16,6 +16,7 @@ public class SpawnManager : MonoBehaviour
 	public int totalScore;
 	public int score;
 
+
 	void Start()
 	{
 		// 몬스터 오브젝트 풀 생성
@@ -35,7 +36,6 @@ public class SpawnManager : MonoBehaviour
 
 		// 스코어 점수 출력
 		totalScore = PlayerPrefs.GetInt("Total_Score", 0);
-		//DisplayScore(0);
 	}
 
 	void CreateMonster()
