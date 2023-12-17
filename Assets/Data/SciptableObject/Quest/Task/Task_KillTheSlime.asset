@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225a13f6e3832284f86b1ead145112dd, type: 3}
+  m_Name: Task_KillTheSlime
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: db22835d976e43d4fa02468125585987, type: 2}
+  codeName: KILL THE SLIME 3
+  description: KILL THE SLIME 3
+  targets:
+  - {fileID: 11400000, guid: b1b2f8ba5269cc24da6f8e7f3e1c47bb, type: 2}
+  action: {fileID: 11400000, guid: 22d06051673b293459083f646fbd4e31, type: 2}
+  initialSuccessValue: {fileID: 0}
+  needSuccessToComplete: 3
+  canReceiveReportsDuringCompletion: 0

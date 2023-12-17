@@ -47,6 +47,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	private SpawnManager spawnManager;
 	private ItemRandomDropper itemRandomDropper;
 	public int damage; // Enemy가 Player에게 가하는 피해
+	public UnityEngine.Events.UnityEvent OnDead;
 
 	private void OnEnable()
 	{
@@ -162,8 +163,8 @@ public class EnemyState : MonoBehaviour, IDamageable
 					// 플레이어의 위치를 향하도록 몬스터의 회전을 조정
 					transform.LookAt(player.position);
 					animator.SetBool("IsAttack", true);
-					yield return new WaitForSeconds(1f);
-					// Player에게 데미지를 줌
+					yield return new WaitForSeconds(2f);
+					
 					playerState.TakeDamage(damage);
 					Debug.Log("State.ATTACK");
 					//stateText.text = "State: ATTACK";
@@ -200,7 +201,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 					{
 						itemRandomDropper.RandomDrop();
 					}
-					break;
+					break;			
 			}
 			yield return new WaitForSeconds(0.1f);
 		}
@@ -253,6 +254,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 			curHP = 0;
 			state = State.DIE;
 			spawnManager.DisplayScore(spawnManager.score);
+			OnDead.Invoke();
 
 			//if (GameManager.Sound.isLive)
 			//GameManager.Sound.PlaySfx(SoundManager.Sfx.Dead);

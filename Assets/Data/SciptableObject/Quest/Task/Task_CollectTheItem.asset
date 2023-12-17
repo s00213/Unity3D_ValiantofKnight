@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225a13f6e3832284f86b1ead145112dd, type: 3}
+  m_Name: Task_CollectTheItem
+  m_EditorClassIdentifier: 
+  category: {fileID: 11400000, guid: 073c2287d6fee6e4289de876b5175d69, type: 2}
+  codeName: COLLECT THE ITEM
+  description: Collect The Item
+  targets:
+  - {fileID: 11400000, guid: ec993ab274d4c0945b18db167fb9d117, type: 2}
+  action: {fileID: 11400000, guid: 22d06051673b293459083f646fbd4e31, type: 2}
+  initialSuccessValue: {fileID: 0}
+  needSuccessToComplete: 5
+  canReceiveReportsDuringCompletion: 0

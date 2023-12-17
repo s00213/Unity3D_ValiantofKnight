@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
+using UnityEngine.UI;
+using static UnityEditor.Progress;
+using static UnityEngine.ParticleSystem;
 
 public class PoolManager : MonoBehaviour
 {
@@ -9,6 +13,12 @@ public class PoolManager : MonoBehaviour
 	Dictionary<string, Transform> poolContainer;
 	private Transform poolRoot;
 	private Canvas canvasRoot;
+
+	public GameObject[] objectPrefabs;
+	private List<GameObject> pooledObjs = new List<GameObject>();
+	private Transform DynamicCanvas, HPCanvas;
+	public Transform Particles, Items, QuestArea, DescriptionArea;
+
 
 	private void Awake()
 	{

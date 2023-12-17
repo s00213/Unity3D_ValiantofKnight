@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
 	public int score;
 
 
-	void Start()
+	private void Start()
 	{
 		// 몬스터 오브젝트 풀 생성
 		CreateMonsterPool();
@@ -34,11 +34,10 @@ public class SpawnManager : MonoBehaviour
 		// 일정한 시간 간격으로 함수를 호출
 		InvokeRepeating("CreateMonster", 2.0f, createTime);
 
-		// 스코어 점수 출력
-		totalScore = PlayerPrefs.GetInt("Total_Score", 0);
+		totalScore = 0;
 	}
 
-	void CreateMonster()
+	private void CreateMonster()
 	{
 		// 몬스터의 불규칙한 생성 위치 산출
 		int index = Random.Range(0, points.Count);
@@ -53,7 +52,7 @@ public class SpawnManager : MonoBehaviour
 	}
 
 	// 오브젝트 풀에 몬스터 생성
-	void CreateMonsterPool()
+	private void CreateMonsterPool()
 	{
 		for (int i = 0; i < maxMonsters; i++)
 		{

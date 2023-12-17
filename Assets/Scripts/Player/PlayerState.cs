@@ -15,7 +15,7 @@ public class PlayerState : MonoBehaviour
 
    [Header("UI")]
 	public Slider HPSlider;
-	public TMP_Text HPText;
+	// public TMP_Text HPText;
 
 	[Header("")]
 	public TMP_Text hitDamageText;
@@ -39,7 +39,7 @@ public class PlayerState : MonoBehaviour
 		HPSlider.maxValue = maxHP;
 		curHP = maxHP;
 		HPSlider.value = curHP;
-		HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
+		//HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
 
 		hitDamageText.gameObject.SetActive(false);
 		hitDamageText.text = "0";
@@ -55,6 +55,7 @@ public class PlayerState : MonoBehaviour
 	private void Update()
 	{
 		CheckSpecialAbilityKeys();
+
 		if (Input.GetMouseButtonUp(0))
 		{
 			movementStarted = false;
@@ -80,7 +81,7 @@ public class PlayerState : MonoBehaviour
 		}
 
 		// 현재 HP와 최대 HP 텍스트로 표시됨
-		HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
+		// HPText.text = curHP.ToString("f0") + "/" + maxHP.ToString("f0");
 		// 데미지 숫자를 텍스트로 설정
 		hitDamageText.text = "-" + damage.ToString();
 

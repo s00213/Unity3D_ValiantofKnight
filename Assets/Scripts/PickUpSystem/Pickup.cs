@@ -12,7 +12,9 @@ namespace Inventories
 
 		InventorySystem inventory;
 
-        private void Awake()
+		[SerializeField] private QuestReporter questReporter;
+
+		private void Awake()
         {
             var player = GameObject.FindGameObjectWithTag("Player");
             inventory = player.GetComponent<InventorySystem>();
@@ -49,7 +51,7 @@ namespace Inventories
             if (foundSlot)
             {
                 Destroy(gameObject);
-            }
+			}
         }
 
         public bool CanBePickedUp()

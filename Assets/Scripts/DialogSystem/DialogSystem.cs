@@ -17,6 +17,10 @@ namespace Dialog
 
 		public static DialogSystem Dialog;
 
+		public delegate void DialogCompletionCallback();
+
+		public event DialogCompletionCallback OnDialogComplete;
+
 		private void Awake()
 		{
 			if (Dialog != null)

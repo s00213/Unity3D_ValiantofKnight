@@ -1,6 +1,8 @@
 using UnityEngine;
 using Inventories;
 using TMPro;
+using UnityEngine.Events;
+using Control;
 
 namespace Control
 {
@@ -12,6 +14,8 @@ namespace Control
 
 		public TMP_Text triggerText;
 		private bool isTriggered;
+
+		public UnityEvent OnPickUpItme;
 
 		private void Awake()
 		{
@@ -51,6 +55,7 @@ namespace Control
 				{
 					pickup.PickupItem();
 					Destroy(gameObject);
+					OnPickUpItme.Invoke();
 				}
 				else
 				{
@@ -60,3 +65,4 @@ namespace Control
 		}
 	}
 }
+
