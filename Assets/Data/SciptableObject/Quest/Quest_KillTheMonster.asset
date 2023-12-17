@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: db22835d976e43d4fa02468125585987, type: 2}
   icon: {fileID: 0}
-  codeName: Kill The Monster
-  displayName: Kill The Monster
-  description: "\uBAAC\uC2A4\uD130\uB97C \uCC98\uCE58\uD558\uC138\uC694!!"
+  codeName: "\uBAAC\uC2A4\uD130\uB97C \uC0AC\uB0E5\uD558\uC138\uC694!!"
+  displayName: "\uBAAC\uC2A4\uD130\uB97C \uC0AC\uB0E5\uD558\uC138\uC694!!"
+  description: "\uBAAC\uC2A4\uD130\uB97C \uC0AC\uB0E5\uD558\uC138\uC694!!"
   taskGroups:
   - tasks:
     - {fileID: 11400000, guid: 72c72021a76012a4793c9da6282ac41e, type: 2}

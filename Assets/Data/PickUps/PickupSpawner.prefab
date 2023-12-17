@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7936743508210502586}
   - component: {fileID: 7936743508210502585}
   - component: {fileID: 456029857307444114}
-  - component: {fileID: -760924654787734686}
   m_Layer: 0
   m_Name: PickupSpawner
   m_TagString: Untagged
@@ -46,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4417844ce4278440a80c74bc10e69de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 0}
+  item: {fileID: 11400000, guid: c92664ea68ccad445bc3dbe5fa3d5b7b, type: 2}
   number: 1
 --- !u!114 &456029857307444114
 MonoBehaviour:
@@ -61,20 +60,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueIdentifier: 
---- !u!114 &-760924654787734686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7936743508210502584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af76d9a914e9d534aacdc8ecb10f8e27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  category: {fileID: 11400000, guid: 073c2287d6fee6e4289de876b5175d69, type: 2}
-  target: {fileID: 11400000, guid: ea71e6b5db00ee04f84c8467c9847dbb, type: 2}
-  successCount: 1
-  colliderTags:
-  - Player

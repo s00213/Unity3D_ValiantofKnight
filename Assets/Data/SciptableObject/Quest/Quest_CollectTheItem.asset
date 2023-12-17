@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   category: {fileID: 11400000, guid: 073c2287d6fee6e4289de876b5175d69, type: 2}
   icon: {fileID: 0}
-  codeName: "\uC544\uC774\uD15C 5\uAC1C \uC8FC\uC6B0\uC138\uC694"
-  displayName: "\uC544\uC774\uD15C 5\uAC1C \uC8FC\uC6B0\uC138\uC694"
-  description: "\uC544\uC774\uD15C 5\uAC1C \uC8FC\uC6B0\uC138\uC694"
+  codeName: "\uC544\uC774\uD15C 5\uAC1C\uB97C \uC218\uC9D1\uD558\uC138\uC694"
+  displayName: "\uC544\uC774\uD15C 5\uAC1C\uB97C \uC218\uC9D1\uD558\uC138\uC694"
+  description: "\uC544\uC774\uD15C 5\uAC1C\uB97C \uC218\uC9D1\uD558\uC138\uC694"
   taskGroups:
   - tasks:
     - {fileID: 11400000, guid: b434eb9e71913834ab11a323fda19880, type: 2}

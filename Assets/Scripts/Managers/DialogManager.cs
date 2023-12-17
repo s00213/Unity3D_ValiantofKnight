@@ -38,8 +38,8 @@ namespace Dialog
 			if (Collison.CompareTag("Player"))
 			{
 				canAcitveBox = true;
-				//triggerText.gameObject.SetActive(true);
-				//triggerText.text = npcName + " 와 대화하려면 [ E ] 키를 누르세요";
+				triggerText.gameObject.SetActive(true);
+				triggerText.text = npcName + " 와 대화하려면 [ E ] 키를 누르세요";
 			}
 		}
 
@@ -48,24 +48,25 @@ namespace Dialog
 			if (Collison.CompareTag("Player"))
 			{
 				canAcitveBox = false;
-				//triggerText.gameObject.SetActive(true);
-				//triggerText.text = npcName + " 와 대화하려면 [ E ] 키를 누르세요";
-				//if (Collison.CompareTag("Player"))
-				//{
-				//	if (!isTriggered)
-				//	{
-				//		triggerText.text = "";
-				//		triggerText.gameObject.SetActive(false);
-				//		dialogUI.gameObject.SetActive(false);
-				//	}			
+				triggerText.gameObject.SetActive(true);
+				triggerText.text = npcName + " 와 대화하려면 [ E ] 키를 누르세요";
+				if (Collison.CompareTag("Player"))
+				{
+					if (!canAcitveBox)
+					{
+						triggerText.text = "";
+						triggerText.gameObject.SetActive(false);
+						dialogUI.gameObject.SetActive(false);
+					}
+				}
 			}
 		}
 
 		private void TalkToNPC()
 		{
-			//triggerText.text = "";
-			//triggerText.gameObject.SetActive(false);
-			dialogUI.gameObject.SetActive(true);
+				triggerText.text = "";
+				triggerText.gameObject.SetActive(false);
+				dialogUI.gameObject.SetActive(true);
 			DialogSystem.Dialog.SetNPCName(npcName);
 			DialogSystem.Dialog.ActivateDialog(sentences);
 		}

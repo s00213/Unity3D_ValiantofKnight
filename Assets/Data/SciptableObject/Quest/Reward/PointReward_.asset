@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e692501b46346f41afd5f399278c126, type: 3}
   m_Name: PointReward_
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300036, guid: 9c2c642c47b2fc344ab143e21aedaca9, type: 3}
   description: Reward
   quantity: 30

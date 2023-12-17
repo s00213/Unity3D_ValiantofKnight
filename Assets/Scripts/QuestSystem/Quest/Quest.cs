@@ -71,7 +71,6 @@ public class Quest : ScriptableObject
 	public event CanceledHandler onCanceled;
 	public event NewTaskGroupHandler onNewTaskGroup;
 
-
 	// 퀘스트가 등록되었을 때 실행됨, Awake 역할의 함수
 	public void OnRegister()
 	{

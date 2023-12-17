@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 6997811445119991105}
   - component: {fileID: 6494234044896430859}
   - component: {fileID: 7794675087621724674}
-  - component: {fileID: 7591854868274663015}
+  - component: {fileID: 3222853580784339169}
+  - component: {fileID: 743327278054199933}
   m_Layer: 0
   m_Name: PickUp
   m_TagString: Untagged
@@ -62,7 +63,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f208ba0dbe65d478b628ca24b59c42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questReporter: {fileID: 7591854868274663015}
 --- !u!114 &7794675087621724674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   OnPickUpItme:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7591854868274663015}
+      - m_Target: {fileID: 743327278054199933}
         m_TargetAssemblyTypeName: QuestReporter, Assembly-CSharp
         m_MethodName: Report
         m_Mode: 1
@@ -91,7 +91,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7591854868274663015
+--- !u!114 &3222853580784339169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222577395524571727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52705da084de5449ad1910b8646234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 50
+--- !u!114 &743327278054199933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,8 +119,7 @@ MonoBehaviour:
   category: {fileID: 11400000, guid: 073c2287d6fee6e4289de876b5175d69, type: 2}
   target: {fileID: 11400000, guid: ec993ab274d4c0945b18db167fb9d117, type: 2}
   successCount: 1
-  colliderTags:
-  - 
+  colliderTags: []
 --- !u!1 &2131488106323844973
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,14 +281,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4402231132195331375}
-  m_LocalRotation: {x: 0.12967272, y: -0, z: -0, w: 0.9915569}
-  m_LocalPosition: {x: 0, y: 0.18900001, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 2.6977985, y: 2.6977985, z: 2.6977985}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6393032711310101895}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 14.901001, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7683900107942146181
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ using UnityEngine.AI;
 using UnityEngine.Playables;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 /// <summary>
 /// FSM
@@ -47,7 +48,7 @@ public class EnemyState : MonoBehaviour, IDamageable
 	private SpawnManager spawnManager;
 	private ItemRandomDropper itemRandomDropper;
 	public int damage; // Enemy가 Player에게 가하는 피해
-	public UnityEngine.Events.UnityEvent OnDead;
+	public UnityEvent OnDead;
 
 	private void OnEnable()
 	{

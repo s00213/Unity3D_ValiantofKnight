@@ -12,7 +12,7 @@ namespace Inventories
 
 		InventorySystem inventory;
 
-		[SerializeField] private QuestReporter questReporter;
+		//[SerializeField] private QuestReporter questReporter;
 
 		private void Awake()
         {
