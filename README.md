@@ -16,7 +16,8 @@
 ---
 ## :crystal_ball: 게임 이미지
 
-![개인 포폴 이미지](https://github.com/KANGSOOIN/3D-Valiant-of-Knight/assets/130741297/c235262f-f63a-475f-8d9a-6fda5efa8a1a)
+![개인 포폴 이미지](https://github.com/KANGSOOIN/3D-Valiant-of-Knight/assets/130741297/b0645ad6-5a86-4436-8c12-f7bd5a77a723)
+
 
 ![](../header.png)
 
