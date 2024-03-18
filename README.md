@@ -9,7 +9,7 @@
 ```sh
 개발 기간 : 2023.10.04 ~ 2023.10.27 (24일)
 인원 : 1인
-사용 툴 : Unity Engine 2021.3, Visual Studio 2022, Git, Githu
+사용 툴 : Unity Engine 2021.3, Visual Studio 2022, Git, Github
 ```
 ![](../header.png)
 
